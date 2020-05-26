@@ -12,7 +12,7 @@ function App() {
     <Router>
     <Fragment>
       <Toolbar />
-      <div className='container'>
+      <div className='container_main'>
         <Switch>
           <Route exact path='/' component={Welcome} />
           <Route exact path='/selected' component={Selected} />

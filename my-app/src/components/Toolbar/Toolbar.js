@@ -6,6 +6,7 @@ const toolbar = props => {
         <header className="toolbar">
             <nav className="toolbar__navigation">
                 <div className="toolbar__logo"><a href="">Nobel Prize Winners Books</a></div>
+                {/* <div className="spacer"></div> */}
                 <div className="toolbar_navigation-items">
                     <ul>
                         <li><a href="#">Home</a></li>
