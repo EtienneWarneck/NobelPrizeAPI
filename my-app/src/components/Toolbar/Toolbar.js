@@ -3,17 +3,17 @@ import './Toolbar.css';
 
 const toolbar = props => {
     return (
-        <header>
-            <nav>
-                <div><a href="">LOGO</a></div>
-                <div><ul>
-                    <li><a href="">Login</a></li>
-                    <li><a href="">Categories</a></li>
-                </ul>
+        <header className="toolbar">
+            <nav className="toolbar__navigation">
+                <div className="toolbar__logo"><a href="">Nobel Prize Winners Books</a></div>
+                <div className="toolbar_navigation-items">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Categories</a></li>
+                    </ul>
                 </div>
             </nav>
         </header>
-
     )
 }
 

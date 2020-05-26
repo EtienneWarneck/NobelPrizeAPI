@@ -1,0 +1,24 @@
+.toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* position: ; */
+    background-color:#8e5b52;
+    height: 100px;
+}
+
+.toolbar__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar__logo a {
+    border: 1px solid red;
+    font-family: Alfred Sans Regular;
+    color: white;
+    /* color: #bb8a35; */
+    text-decoration: none;
+    font-size: 3rem;
+}
