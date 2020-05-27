@@ -4,27 +4,17 @@ import './ButtonList.css';
 function ButtonList(props) {
     console.log(props);
 
-    // const buttons = ["Physics", "Chemistry", "Medicine", "Litterature", "Peace", "Economics"];
-    const buttons1 = ["Physics", "Chemistry", "Medicine"];
-    const buttons2 = ["Literature", "Peace", "Economics"];
+    const buttons = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
 
-    const listValues = buttons1.map((button) =>
+    const listValues = buttons.map((button) =>
         <button key={button.toString()} >
-            {button.toUpperCase()}
+            {button}
         </button>)
-    const listValues2 = buttons2.map((button) =>
-        <button key={button.toString()} >
-            {button.toUpperCase()}
-        </button>)
-
 
     return (
         <div className="container__main">
             <section className="container__section">
-                <article> {listValues}</article>
-            </section>
-            <section className="container__section">
-                <article> {listValues2}</article>
+                {listValues}
             </section>
         </div>
     );

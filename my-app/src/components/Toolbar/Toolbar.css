@@ -4,7 +4,9 @@
     left: 0;
     width: 100%;
     /* position: ; */
-    background-color: #8e5b52;
+    /* background-color: #33322c; */
+    background-color: #8e5b52 ;
+    background-color: rgba(131, 54, 54, 0.726);
     height: 100px;
 }
 
@@ -16,16 +18,14 @@
 
 .toolbar__logo {
     margin-top: 2em;
+    
 }
 
 .toolbar__logo a {
     border: 1px solid red;
     color: white;
-    /* color: #bb8a35; */
+    color: #f7d00c;
     text-decoration: none;
     font-size: 2rem;
 }
 
-.spacer {
-    flex: 1;
-}
