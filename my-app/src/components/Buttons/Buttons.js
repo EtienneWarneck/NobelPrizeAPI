@@ -6,7 +6,7 @@ function Buttons(props) {
     return (
         <div>
             <div className="spacer"></div>
-            <ButtonList button={props.button}></ButtonList>
+            {/* <ButtonList button={props.button}></ButtonList> */}
         </div>
     )
 }
