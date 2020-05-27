@@ -6,7 +6,7 @@ function ButtonList(props) {
 
     // const buttons = ["Physics", "Chemistry", "Medicine", "Litterature", "Peace", "Economics"];
     const buttons1 = ["Physics", "Chemistry", "Medicine"];
-    const buttons2 = ["Litterature", "Peace", "Economics"];
+    const buttons2 = ["Literature", "Peace", "Economics"];
 
     const listValues = buttons1.map((button) =>
         <button key={button.toString()} >
