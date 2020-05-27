@@ -5,14 +5,14 @@ const toolbar = props => {
     return (
         <header className="toolbar">
             <nav className="toolbar__navigation">
-                <div className="toolbar__logo"><a href="">Nobel Prize Winners Books</a></div>
-                {/* <div className="spacer"></div> */}
-                <div className="toolbar_navigation-items">
+                <div className="toolbar__logo"><a href="">NOBEL PRIZE WINNER BOOKS</a></div>
+               
+                {/* <div className="toolbar_navigation-items">
                     <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Categories</a></li>
                     </ul>
-                </div>
+                </div> */}
             </nav>
         </header>
     )

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import './App.css';
 // import Button from 'react-bootstrap/Button';
 import Toolbar from './components/Toolbar/Toolbar'
-import { MemoryRouter, Link ,Route, Switch } from 'react-router-dom';
+import { MemoryRouter, Link, Route, Switch } from 'react-router-dom';
 import Welcome from './components/pages/welcome';
 import Selected from './components/pages/selected';
 // import { Link } from 'react-router';
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <MemoryRouter>
-       {/* <h2>
+      {/* <h2>
           Navigate to{' '}
           <ButtonToolbar className="custom-btn-toolbar">
             <Link to="/">
@@ -33,22 +33,20 @@ function App() {
         </h2> */}
 
       <Fragment>
-        <Toolbar />
-        <div>
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
-            <Route path="/">
-              <Welcome />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Welcome />
+          </Route>
+        </Switch>
+
       </Fragment>
-     
+
 
     </MemoryRouter>
   );

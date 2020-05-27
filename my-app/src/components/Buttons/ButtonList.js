@@ -10,11 +10,11 @@ function ButtonList(props) {
 
     const listValues = buttons1.map((button) =>
         <button key={button.toString()} >
-            {button}
+            {button.toUpperCase()}
         </button>)
     const listValues2 = buttons2.map((button) =>
         <button key={button.toString()} >
-            {button}
+            {button.toUpperCase()}
         </button>)
 
 

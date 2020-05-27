@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     /* position: ; */
-    background-color:#8e5b52;
+    background-color: #8e5b52;
     height: 100px;
 }
 
@@ -14,15 +14,18 @@
     justify-content: center;
 }
 
+.toolbar__logo {
+    margin-top: 2em;
+}
+
 .toolbar__logo a {
     border: 1px solid red;
     color: white;
     /* color: #bb8a35; */
     text-decoration: none;
-    font-size: 3rem;
-    /* white-space: nowrap; */
+    font-size: 2rem;
 }
 
 .spacer {
-    flex:1;
+    flex: 1;
 }
