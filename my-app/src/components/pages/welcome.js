@@ -3,7 +3,7 @@ import React from 'react';
 // import Button from 'react-bootstrap/Button';
 import ButtonList from '../Buttons/ButtonList';
 import Toolbar from "../Toolbar/Toolbar";
-import Selected from "../pages/selected";
+// import Selected from "../pages/selected";
 
 
 function welcome() {
