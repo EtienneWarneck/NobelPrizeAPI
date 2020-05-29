@@ -24,7 +24,6 @@ class Selected extends Component {
                 e={e.awardYear}
                 category={e.categoryFullName.en}
                 name={e.laureates.motivation}
-               
             />;
         });
 
