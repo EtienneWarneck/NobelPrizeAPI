@@ -19,7 +19,13 @@ class Selected extends Component {
         console.log("this.state", this.state);
         //create array of laureates
         const laureates = this.state.laureates.map((e, id) => {
-            return <AuthorCard key={e.id} e={e.awardYear} />;
+            return <AuthorCard
+                key={e.id}
+                e={e.awardYear}
+                category={e.categoryFullName.en}
+                name={e.laureates.motivation}
+               
+            />;
         });
 
         return (
