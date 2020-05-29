@@ -2,8 +2,8 @@ import React from 'react';
 import './ButtonList.css';
 
 function ButtonList(props) {
-    console.log(props);
-
+    // console.log(props);
+    
     const handleClick = (e) => {
         e.preventDefault();
         console.log('The link was clicked.');

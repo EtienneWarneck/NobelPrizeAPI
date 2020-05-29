@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import AuthorCard from '../AuthorCard/AuthorCard.js';
 
-class selected extends Component {
-
-    state= {
-            laureatesData : []
+class Selected extends Component {
+    state = {
+        laureates: [ ]
     }
 
     componentDidMount() {
         axios.get('http://api.nobelprize.org/2.0/laureates')
             .then(response => {
-                this.setState(laureatesData: response.data);
-                console.log(response)
+                console.log(response.data.laureates)
+                console.log(response.data)
+                this.setState({ laureates: response.data });
             });
     };
-
-
     render() {
-        const laureates = this.state.laureatesData.map(laureate => {
-            return <div></div>
-        }
-        )
+//create array of laureates
+        const laureates = this.state.laureates.map(laureate => { 
+            return <AuthorCard title={laureate.laureates} />;
+        })
+
         return (
-            <div>
-              
-            </div>
+                <div>HERE
+                    <section>
+                {laureates} 
+                </section>
+                {/* <AuthorCard/> */}
+                </div>
         )
     };
 }
 
-export default selected;
+export default Selected;

@@ -1,26 +1,21 @@
 import React, { Fragment } from 'react';
 import './App.css';
-// import Button from 'react-bootstrap/Button';
-import Toolbar from './components/Toolbar/Toolbar'
-import { MemoryRouter, Link, Route, Switch } from 'react-router-dom';
+// import Toolbar from './components/Toolbar/Toolbar'
+import { BrowserRouter as Router,Route, Switch } from 'react-router-dom';
 import Welcome from './components/pages/welcome';
 import Selected from './components/pages/selected';
 // import { Link } from 'react-router';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
-import Button from 'react-bootstrap/Button';
+// import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+// import Button from 'react-bootstrap/Button';
 
 
 
 function App() {
-  const Home = () => <span>Home</span>;
-
-  const About = () => <span>About</span>;
-
-  const Users = () => <span>Users</span>;
-
+  // const Home = () => <span>Home</span>;
+  // const Selected = () => <span>Selected</span>;
   return (
-    <MemoryRouter>
-      {/* <h2>
+    <Router>
+    {/* <h2>
           Navigate to{' '}
           <ButtonToolbar className="custom-btn-toolbar">
             <Link to="/">
@@ -34,21 +29,19 @@ function App() {
 
       <Fragment>
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
+
           <Route path="/selected">
             <Selected />
           </Route>
+
           <Route path="/">
             <Welcome />
           </Route>
-        </Switch>
 
+        </Switch>
       </Fragment>
 
-
-    </MemoryRouter>
+</Router>
   );
 }
 

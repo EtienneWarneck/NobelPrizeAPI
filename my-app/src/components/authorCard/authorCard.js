@@ -1,17 +1,27 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+// import Button from 'react-bootstrap/Button';
 
-const authorCard = (props) {
-    return (
-        <div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">steve@apple.com</h6>
-                    <p class="card-text">Stay Hungry, Stay Foolish</p>
-                </div>
+const authorCard = (props) => (
+
+    <article>
+        <h1>{props.title}</h1>
+            <div>
+
             </div>
-        </div>
-    )
-}
+    </article>
 
-export default authorCard
+    // <Card style={{ width: '18rem' }}>
+    //     <Card.Img variant="top" src="holder.js/100px180" />
+    //     <Card.Body>
+    //         <Card.Title>props.title {props.title}</Card.Title>
+    //         <Card.Text>
+    //             Some quick example text to build on the card title and make up the bulk of
+    //             the cards content.
+    //   </Card.Text>
+    //         {/* <Button variant="primary">Go somewhere</Button> */}
+    //     </Card.Body>
+    // </Card>
+);
+
+export default authorCard;
