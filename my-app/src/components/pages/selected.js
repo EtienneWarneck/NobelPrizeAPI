@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
-function selected() {
-    return (
-        <div>
-            {/* <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Steve Jobs</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">steve@apple.com</h6>
-                    <p class="card-text">Stay Hungry, Stay Foolish</p>
-                </div>
-            </div> */}
-        </div>
-    )
+class selected extends Component {
+
+    state= {
+            laureatesData : []
+    }
+
+    componentDidMount() {
+        axios.get('http://api.nobelprize.org/2.0/laureates')
+            .then(response => {
+                this.setState(laureatesData: response.data);
+                console.log(response)
+            });
+    };
+
+
+    render() {
+        const laureates = this.state.laureatesData.map(laureate => {
+            return <div></div>
+        }
+        )
+        return (
+            <div>
+              
+            </div>
+        )
+    };
 }
 
-export default selected
+export default selected;

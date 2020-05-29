@@ -37,8 +37,8 @@ function App() {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/selected">
+            <Selected />
           </Route>
           <Route path="/">
             <Welcome />
