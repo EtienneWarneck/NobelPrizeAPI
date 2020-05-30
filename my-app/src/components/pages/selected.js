@@ -4,26 +4,44 @@ import AuthorCard from '../AuthorCard/AuthorCard.js';
 
 class Selected extends Component {
     state = {
-        laureates: []
+        nobelCategories: [
+            // {category: "Physics"},
+            // {category: "Chemistry"},
+            // {category: "Medicine"},
+            // {category: "Literature"},
+            // {category: "Peace"},
+            // {category: "Economics"},
+        ]
     };
 
-    componentDidMount() {
+//    changeCategory = (e) => {
+//         const nobelCategory = this.state.nobelCategories
+//         console.log('The link was clicked.');
+
+//     }
+
+
+    async componentDidMount() {
         axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/{year}')
             .then(response => {
                 console.log("response.data", response.data);
                 // console.log("HERE 2", response.data.laureates[2].fullName.en);
-                this.setState({ laureates: response.data });
+                this.setState({
+                     nobelCategories: response.data });
+                // console.log("test", response.data[0].laureates[0].knownName)
+                console.log("test", response.data[0].category.en)
             });
     };
     render() {
         console.log("this.state", this.state);
         //create array of laureates
-        const laureates = this.state.laureates.map((e, id) => {
+        const laureates = this.state.nobelCategories.map((e,id) => {
             return <AuthorCard
                 key={e.id}
-                e={e.awardYear}
-                category={e.categoryFullName.en}
-                name={e.laureates.motivation}
+                value={e}
+                award={e.awardYear}  //working
+                category={e.categoryFullName.en} //working
+                // name={e.laureates[id]}
             />;
         });
 
