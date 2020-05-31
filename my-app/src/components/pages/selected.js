@@ -14,36 +14,45 @@ class Selected extends Component {
         ]
     };
 
-//    changeCategory = (e) => {
-//         const nobelCategory = this.state.nobelCategories
-//         console.log('The link was clicked.');
-
-//     }
+    // changeCategory = (e) => {
+    //     const nobelCategoryIndex = this.state.nobelCategories.findIndex(p => {
+    //         return p.id === id;
+    //     })
+    // }
+    // const category = {
+    //     ...this.state.nobelCategories[nobelCategoriesIndex]
+    // }
 
 
     async componentDidMount() {
         axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/{year}')
             .then(response => {
                 console.log("response.data", response.data);
-                // console.log("HERE 2", response.data.laureates[2].fullName.en);
+                // console.log(response.data.laureates[2].fullName.en);
                 this.setState({
-                     nobelCategories: response.data });
-                // console.log("test", response.data[0].laureates[0].knownName)
-                console.log("test", response.data[0].category.en)
+                    nobelCategories: response.data
+                });
+                // console.log("test", response.data[0].laureates[0].knownName.en)
+                console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
             });
     };
     render() {
-        console.log("this.state", this.state);
+        // if( !this.state.isReady ){
+        //     return <div>Loading...</div>
+        //   }
+        // console.log("this.state", this.state);
         //create array of laureates
-        const laureates = this.state.nobelCategories.map((e,id) => {
+        const laureates = this.state.nobelCategories.map((e) => {
             return <AuthorCard
                 key={e.id}
                 value={e}
-                award={e.awardYear}  //working
-                category={e.categoryFullName.en} //working
-                // name={e.laureates[id]}
+                award={e.awardYear}  // YEAR
+                // award={e.award}  // YEAR
+                category={e.category.en} // PRIZE CATEGORY 
+                name={e.laureates[0].knownName?.en} // NAME OF WINNER
             />;
         });
+        console.log("laureates", laureates);
 
         return (
             <div>
