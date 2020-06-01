@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import AuthorCard from '../AuthorCard/AuthorCard.js';
+import Toolbar from '../Toolbar/Toolbar'
 
 class Selected extends Component {
     state = {
@@ -56,9 +57,11 @@ class Selected extends Component {
 
         return (
             <div>
-                <section>
+                <Toolbar />
+                <div className="spacer"></div>
+                <div class="row row-cols-2 ">
                     {laureates}
-                </section>
+                </div>
             </div>
         )
     };
