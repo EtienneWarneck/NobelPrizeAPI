@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import AuthorCard from '../AuthorCard/AuthorCard.js';
-import Toolbar from '../Toolbar/Toolbar'
+import Toolbar from '../Toolbar/Toolbar';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 
 class Selected extends Component {
     state = {
@@ -35,7 +39,8 @@ class Selected extends Component {
                 });
                 // console.log("test", response.data[0].laureates[0].knownName.en)
                 console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
-            });
+            }).
+            catch(err => console.log(err))
     };
     render() {
         // if( !this.state.isReady ){
@@ -53,16 +58,21 @@ class Selected extends Component {
                 name={e.laureates[0].knownName?.en} // NAME OF WINNER
             />;
         });
+
         console.log("laureates", laureates);
 
         return (
-            <div>
-                <Toolbar />
+            <div >
                 <div className="spacer"></div>
-                <div class="row row-cols-2 ">
-                    {laureates}
-                </div>
+                <Container>
+                    <Row>
+                        <Col sm={4}>YEAR:</Col>
+                        <Col sm={8}> {laureates}</Col>
+                    </Row>
+                </Container>
             </div>
+
+
         )
     };
 }
