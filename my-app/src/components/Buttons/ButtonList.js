@@ -9,7 +9,7 @@ function ButtonList(props) {
     const handleClick = (e) => {
         e.preventDefault();
         // console.log('The link was clicked.');
-        axios.get('http://api.nobelprize.org/2.0/nobelPrize/chemistry/2019')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/' + 'peace')
         .then(response => {
             console.log("response.data", response.data);
             // const nobelArray = response.data;
