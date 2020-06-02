@@ -9,7 +9,6 @@ import Toolbar from "../Toolbar/Toolbar";
 function welcome() {
     return (
         <div>
-            <Toolbar />
             <div className="spacer"></div>
             <ButtonList />
         </div>

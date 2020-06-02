@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import './AuthCard.css';
 
 const authorCard = (props) => (
-    <div>
+    <div className="authorCard__main">
         {/* <Card class="col mb-5">
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body class="bg-light ">
@@ -12,9 +12,9 @@ const authorCard = (props) => (
             </Card.Body>
         </Card> */}
 
-        <Card class="col bg-info mb-5">
+        <Card className="col bg-info mb-5">
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-            <Card.Body class="bg-light ">
+            <Card.Body className="bg-light ">
             <Card.Title style={{ border: '1px solid red' }}>YEAR: {props.award} </Card.Title>
 
                 {/* <Card.Title style={{ border: '1px solid red'}}>YEAR: {props.award} </Card.Title> */}

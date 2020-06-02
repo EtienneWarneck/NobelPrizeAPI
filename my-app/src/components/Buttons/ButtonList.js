@@ -1,25 +1,33 @@
 import React from 'react';
 import './ButtonList.css';
+import axios from 'axios';
+import Selected from '../pages/selected';
 
 function ButtonList(props) {
     // console.log(props);
 
     const handleClick = (e) => {
         e.preventDefault();
-        console.log('The link was clicked.');
-
+        // console.log('The link was clicked.');
+        axios.get('http://api.nobelprize.org/2.0/nobelPrize/chemistry/2019')
+        .then(response => {
+            console.log("response.data", response.data);
+            // const nobelArray = response.data;
+            // this.props({nobelArray});
+        }).
+        catch(err => console.log(err))
     }
 
-    const buttons = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
+    const categories = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
 
-    const listValues = buttons.map((button) =>
-        <button key={button.toString()} onClick={handleClick}>{button}</button>
+    const categoriesButtons = categories.map((button) =>
+        <button key={button.toString()} value={props.category} onClick={handleClick}>{button}</button>
     )
 
     return (
         <div className="container__main">
             <section className="container__section">
-                {listValues}
+                {categoriesButtons}
             </section>
         </div>
     );
