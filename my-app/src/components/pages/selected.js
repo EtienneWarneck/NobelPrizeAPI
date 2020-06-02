@@ -25,11 +25,12 @@ class Selected extends Component {
         axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/{year}')
             .then(response => {
                 console.log("response.data", response.data);
-                // console.log(response.data.laureates[2].fullName.en);
                 const nobelArray = response.data;
                 this.setState({nobelArray});
-                // console.log("test", response.data[0].laureates[0].knownName.en)
-                // console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
+                console.log("test name", response.data[0].laureates[0].knownName.en)
+                //SAME AS: console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
+                console.log("test category", response.data[0].category.en)
+                
             }).
             catch(err => console.log(err))
     };
@@ -44,12 +45,14 @@ class Selected extends Component {
                 // key={e.id}
                 value={e}
                 award={e.awardYear}  // YEAR
+                value={e.category}
                 // award={e.award}  // YEAR
                 category={e.category.en} // -- PRIZE CATEGORY -- //
                 name={e.laureates[0].knownName?.en} // NAME OF WINNER
             />;
         });
         console.log("laureates", laureates);
+
 
         return (
             <div >

@@ -9,7 +9,7 @@ function ButtonList(props) {
     const handleClick = (e) => {
         e.preventDefault();
         // console.log('The link was clicked.');
-        axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/' + 'peace')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/' + 'category')
         .then(response => {
             console.log("response.data", response.data);
             // const nobelArray = response.data;
@@ -21,8 +21,9 @@ function ButtonList(props) {
     const categories = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
 
     const categoriesButtons = categories.map((button) =>
-        <button key={button.toString()} value={props.category} onClick={handleClick}>{button}</button>
+    <button key={button.toString()} value={props.category} onClick={handleClick}>{button}</button>
     )
+    console.log(props.category);
 
     return (
         <div className="container__main">
