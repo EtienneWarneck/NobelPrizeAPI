@@ -5,12 +5,12 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 // import YearCard from '../YearCard/YearCard.js';
+import Buttons from '../Buttons/Buttons'
 
 
-class Selected extends Component {
+class CardsDisplay extends Component {
     state = {
-        nobelArray: [],
-        category: ""
+        category: []
     };
 
     // changeCategory = (e) => {
@@ -25,10 +25,12 @@ class Selected extends Component {
     async componentDidMount() {
         axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/{year}')
             .then(response => {
+                // const limit = response.data.slice(0, 4);
                 console.log("response.data", response.data);
-                const nobelArray = response.data;
-                this.setState({ nobelArray });
-                console.log("test name", response.data[0].laureates[0].knownName.en)
+                const category = response.data;
+                this.setState({ category : category });
+                // console.log("test name", response.data[0].laureates[0].knownName.en)
+                // console.log("test name", response.data[0].laureates[0].knownName.en)
                 //SAME AS: console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
                 console.log("test category", response.data[0].category.en)
 
@@ -41,9 +43,9 @@ class Selected extends Component {
         //   }
         // console.log("this.state", this.state);
         //create array of laureates
-        const laureates = this.state.nobelArray.map((e) => {
+        const laureates = this.state.category.map((e) => {
             return <WinnerCard
-                // key={e.id}
+                key={e.laureates[0].id}
                 value={e}
                 award={e.awardYear}  // YEAR
                 category={e.category.en} // -- PRIZE CATEGORY -- //
@@ -51,13 +53,13 @@ class Selected extends Component {
                 motivation={e.laureates[0].motivation?.en}
 
                 value={e.category}
-                // award={e.award}  // YEAR
+            // award={e.award}  // YEAR
             />
         });
 
 
 
-        console.log("laureates", laureates);
+        // console.log("laureates", laureates);
 
 
 
@@ -65,9 +67,12 @@ class Selected extends Component {
             <div >
                 <div className="spacer"></div>
                 <Container>
+                        {/* <Buttons/> */}
                     <Row>
+
+
                         {/* <Col sm={4}> </Col> */}
-                        <Col sm={6}> {laureates}</Col>
+                        <Col sm={12}> {laureates}</Col>
                     </Row>
                 </Container>
             </div >
@@ -77,4 +82,4 @@ class Selected extends Component {
     };
 }
 
-export default Selected;
+export default CardsDisplay;

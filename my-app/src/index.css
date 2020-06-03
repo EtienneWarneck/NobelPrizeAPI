@@ -1,0 +1,8 @@
+body {
+    font-family: 'Degular Web', sans-serif
+  }
+
+  @font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(./fonts/DegularDemo-Black.otf) format('otf');
+  }

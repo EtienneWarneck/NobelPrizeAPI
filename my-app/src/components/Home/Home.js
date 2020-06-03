@@ -1,18 +1,20 @@
 import React from 'react';
 // import Buttons from '../Buttons/Buttons'
 // import Button from 'react-bootstrap/Button';
-import ButtonList from '../Buttons/ButtonList';
+import Buttons from '../Buttons/Buttons';
+import CardsDisplay from '../CardsDisplay/CardsDisplay'
 
 // import Selected from "../pages/selected";
 
 
-function welcome() {
+function Home() {
     return (
         <div>
             <div className="spacer"></div>
-            <ButtonList />
+            <Buttons />
+            <CardsDisplay/>
         </div>
     )
 }
 
-export default welcome;
+export default Home;

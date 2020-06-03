@@ -7,7 +7,8 @@ const winnerCard = (props) => (
     <div className="container">
         <Card className="col bg-light mb-5">
             <Card.Body className="bg-light">
-                <Card.Text>{props.award} - {props.category}</Card.Text>
+                <Card.Text>{props.award} </Card.Text>
+                <Card.Text>{props.category}</Card.Text>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text>"{props.motivation}"</Card.Text>
                 <Card.Img variant="top" src="holder.js/100px180" />

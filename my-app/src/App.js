@@ -1,42 +1,48 @@
-import React, { Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Welcome from './components/pages/welcome';
-import Selected from './components/pages/selected';
+import Home from './components/Home/Home';
+import cardsDisplay from './components/CardsDisplay/CardsDisplay';
 import { Link } from 'react-router-dom';
 import Navbar from './components/NavBar/NavBar';
 import Button from 'react-bootstrap/Button';
+import CardsDisplay from './components/CardsDisplay/CardsDisplay';
+import axios from 'axios';
 
 
 
-function App() {
-  // const Home = () => <span>Home</span>;
-  // const Selected = () => <span>Selected</span>;
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cardsData: null
+    }
+  }
+  componentDidMount() {
+    axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/{year}')
+      .then(res => {
+        console.log("response.data", res.data);
+        this.setState({ cardsData: res.data });
+        console.log("test name", res.data[0].laureates[0].knownName.en)
+        //SAME AS: console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
+        console.log("test category", res.data[0].category.en)
+      }).
+      catch(err => console.log(err))
+  };
 
-
-
-  return (
-    <div>
-      <Navbar />
-      <SearchBar />
-      <Router>
-        {/* <h2>
-          Navigate to{' '}
-          <ButtonToolbar className="custom-btn-toolbar">
-            <Link to="/">
-              <Button className="btn btn-small">Welcome</Button>
-            </Link>
-            <Link to="/selected">
-              <Button>Selected</Button>
-            </Link>
-          </ButtonToolbar>
-        </h2> */}
-        <Route exact path="/" component={Welcome} />
-        <Route path="/selected" component={Selected} />
-      </Router>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <Navbar />
+        {/* <SearchBar /> */}
+        <Router>
+          <Route exact path="/" component={Home} />
+          <Route path="/cards" render={(props) => <CardsDisplay {...props} cardsData={this.state.cardsData} />} />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
