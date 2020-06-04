@@ -22,11 +22,11 @@ class App extends Component {
   componentDidMount() {
     axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/{year}')
       .then(res => {
-        console.log("response.data", res.data);
+        // console.log("response.data", res.data);
         this.setState({ cardsData: res.data });
-        console.log("test name", res.data[0].laureates[0].knownName.en)
+        // console.log("test name", res.data[0].laureates[0].knownName.en)
         //SAME AS: console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
-        console.log("test category", res.data[0].category.en)
+        // console.log("test category", res.data[0].category.en)
       }).
       catch(err => console.log(err))
   };

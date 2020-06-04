@@ -1,5 +1,8 @@
 .navbar-text {
     color: #BB8A35 !important;
     width: 100%;
-    
+    font-family: degular, sans-serif;
+    font-style: normal;
+    font-weight: 200;  
+    font-size: 3em;
 }

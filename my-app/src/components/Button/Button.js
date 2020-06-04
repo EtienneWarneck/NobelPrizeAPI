@@ -8,7 +8,7 @@ function button(props) {
             <Button 
             className="btn btn-light d-inline m-2 border-dark" 
             id={props.id}
-            // name={props.name}
+            name={props.name}
             >{props.name}</Button>
             )
 }

@@ -8,24 +8,22 @@ import Button from '../Button/Button'
 const Buttons = props => {
     // console.log(props);
 
-    const [categoryState, setCategoryState] = useState({
-        category: null
-    });
-    const [filteredCategoryState, setfilteredCategoryState] = useState({
-        categoryFiltered: null
-    });
+    // const [categoryState, setCategoryState] = useState('arrayCat');
+    // const [filteredCategoryState, setfilteredCategoryState] = useState({
+    //     categoryFiltered: null
+    // });
 
-    console.log(categoryState, filteredCategoryState);
+    // console.log(categoryState, filteredCategoryState);
 
-    function fetchAPI() {
+    function getData() {
         axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/{year}' + props.category)
             .then(response => {
                 console.log("response", response);
                 console.log("response.data", response.data);
                 // const category = response.data;
-                setCategoryState({
-                    category: response.data.category
-                });
+                // setCategoryState({
+                //     category: response.data.category
+                // });
                 // console.log("test name", response.data[0].laureates[0].knownName.en)
                 //SAME AS: console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
                 // console.log("test category Chemistry=", response.data[0].category.en)
@@ -34,42 +32,22 @@ const Buttons = props => {
     };
 
     const handleClick = () => (
-        fetchAPI()
+        getData()
     )
 
-    function categoryClickHandle(e) {
-        e.preventDefault();
-        console.log("this button was clicked")
+    const categories = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
 
-        // setCategoryState({
-        //     category: props.name
-        // })
-    }
-
-    // const categories = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
-
-    // const categoriesButtons = categories.map((button) =>
-    //     <button key={button.toString()} value={props.category} category={props.setCategoryState} onClick={handleClick} >{button}</button>
-    // )
-
-    // console.log("category", category);
+    const categoriesButtons = categories.map((category) =>
+        <button key={category.toString()} onClick={handleClick} >{category}</button>
+        // key is "Physics ..."
+    )
+    console.log("categoriesButtons", categoriesButtons);
 
     return (
-        <div>
-            <Button id="1" name="Physics" type="button" value="Physics" onClick={categoryClickHandle} />
-            <Button id="2" name="Peac" type="button" value="Peace" onClick={categoryClickHandle} />
-
+        <div className="categories">
+            {categoriesButtons}
         </div>
-        // <div className="container__main">
-        //     <section className="container__section">
-        //         {categoriesButtons}
-        //onClick={() => showCategory()}
-
-        // <div className="categories">
-        //     {/* <Button className="btn btn-light m-5 border-dark" category={categoryState} onClick={handleClick}>Physics</Button> */}
-        //     {categoriesButtons}
-        // </div>
-
     );
 }
+
 export default Buttons;

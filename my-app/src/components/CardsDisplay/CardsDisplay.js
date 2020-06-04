@@ -9,12 +9,15 @@ import Buttons from '../Buttons/Buttons'
 
 
 class CardsDisplay extends Component {
-    state = {
-        category: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            categoriesNobel: []
+        };
     };
 
     // changeCategory = (e) => {
-    //     const nobelCategoryIndex = this.state.nobelArray.findIndex(p => {
+    //     const nobelCategoryIndex = this.state.category.findIndex(p => {
     //         return p.id === id;
     //     })
     // }
@@ -22,28 +25,27 @@ class CardsDisplay extends Component {
     //     ...this.state.nobelArray[nobelCategoriesIndex]
     // }
 
-    async componentDidMount() {
+    componentDidMount() {
         axios.get('http://api.nobelprize.org/2.0/nobelPrize/{category}/{year}')
             .then(response => {
                 // const limit = response.data.slice(0, 4);
                 console.log("response.data", response.data);
-                const category = response.data;
-                this.setState({ category : category });
-                // console.log("test name", response.data[0].laureates[0].knownName.en)
+                const categoryData = response.data;
+
+                this.setState({ categoriesNobel: categoryData });
+                console.log(this.setState)
+
                 // console.log("test name", response.data[0].laureates[0].knownName.en)
                 //SAME AS: console.log("Array of array", response.data[0]['laureates'][0]['knownName']['en']);
-                console.log("test category", response.data[0].category.en)
+                // console.log("test category", response.data[0].category.en)
 
             }).
             catch(err => console.log(err))
     };
     render() {
-        // if( !this.state.isReady ){
-        //     return <div>Loading...</div>
-        //   }
         // console.log("this.state", this.state);
         //create array of laureates
-        const laureates = this.state.category.map((e) => {
+        const laureates = this.state.categoriesNobel.map((e) => {
             return <WinnerCard
                 key={e.laureates[0].id}
                 value={e}
@@ -57,27 +59,17 @@ class CardsDisplay extends Component {
             />
         });
 
-
-
-        // console.log("laureates", laureates);
-
-
-
         return (
             <div >
                 <div className="spacer"></div>
                 <Container>
-                        {/* <Buttons/> */}
+                    {/* <Buttons/> */}
                     <Row>
-
-
                         {/* <Col sm={4}> </Col> */}
                         <Col sm={12}> {laureates}</Col>
                     </Row>
                 </Container>
             </div >
-
-
         )
     };
 }
