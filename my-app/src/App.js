@@ -9,7 +9,7 @@ import Navbar from './components/NavBar/NavBar';
 // import Button from 'react-bootstrap/Button';
 // import CardsWinner from './components/WinnerCard/WinnerCard';
 import AllCardsByGenre from './components/AllCardsByGenre/AllCardsByGenre';
-// import CardsByGenre from './components/CardsByGenre/CardsByGenre';
+import CardsByGenre from './components/CardsByGenre/CardsByGenre';
 // import axios from 'axios';
 
 class App extends Component {
@@ -41,8 +41,8 @@ class App extends Component {
           <Route path="/cards" render={(props) => <CardsWinner {...props} cardsData={this.state.cardsData} />} />
         </Router> */}
         <div className="container d-flex">
-          <AllCardsByGenre />
-          {/* <CardsByGenre/> */}
+          <CardsByGenre/>
+          {/* <AllCardsByGenre /> */}
         </div>
       </div>
     );
