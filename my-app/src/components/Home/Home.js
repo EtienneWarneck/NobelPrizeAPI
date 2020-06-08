@@ -2,7 +2,8 @@ import React from 'react';
 // import Buttons from '../Buttons/Buttons'
 // import Button from 'react-bootstrap/Button';
 import Buttons from '../Buttons/Buttons';
-import CardsDisplay from '../CardsDisplay/CardsDisplay'
+// import CardsDisplay from '../CardsDisplay/CardsDisplay'
+import WinnerCard from '../WinnerCard/WinnerCard';
 
 // import Selected from "../pages/selected";
 
@@ -12,7 +13,7 @@ function Home() {
         <div>
             <div className="spacer"></div>
             <Buttons />
-            <CardsDisplay/>
+            <WinnerCard/>
         </div>
     )
 }

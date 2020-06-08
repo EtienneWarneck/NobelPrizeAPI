@@ -3,3 +3,7 @@
 body {
   margin: 0;
 }
+
+:root {
+  --yellow:  #BB8A35;
+}
