@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 export class CardsByGenre extends Component {
 
@@ -8,10 +9,13 @@ export class CardsByGenre extends Component {
         super()
         this.state = {
             value: "", // the value typed in input
-            // value2: "",
+            year: "",
             category: "", // the category from the API
             awardYear: "",
-            name: ""
+            name: "",
+            name2: "",
+            name3: "",
+            allCardsEco: ""
 
         }
 
@@ -37,13 +41,12 @@ export class CardsByGenre extends Component {
     // };
 
     handleChange(event) { //handleChange runs on every keystroke to update the React state of value
-        this.setState({ value: event.target.value });
+        this.setState({
+            value: event.target.value
+        });
         console.log("YOU'RE TYPPING")
     }
-    // handleChange2(event) { //handleChange runs on every keystroke to update the React state of value
-    //     this.setState({ value: event.target.value });
-    //     console.log("YOU'RE TYPPING 2")
-    // }
+
 
     handleSubmit(event) {
         // alert('You submitted:' + this.state.value);
@@ -54,14 +57,17 @@ export class CardsByGenre extends Component {
             .then(res => {
                 console.log("RES.DATA SUBMIT", res.data)
                 // console.log("CAT", res.data.nobelPrize?.category?.en)
-                // console.log("AWARDYEAR", res.data.nobelPrizes.category.year)
-                console.log('NAME', res.data.nobelPrizes[0].laureates[0].knownName.en,)
+                console.log("AWARDYEAR", res.data.nobelPrizes[0].awardYear)
+                console.log('NAME', res.data.nobelPrizes[0].laureates[0].knownName.en) //OK
+                console.log('CAT', res.data.nobelPrizes[0].category.en) //OK
 
                 // if (res.data === undefined) {
                 this.setState({
-                    // category: res.data.nobelPrizes?.category?.en
                     name: res.data.nobelPrizes[0].laureates[0].knownName.en,
-                    // awardYear: res.data.nobelPrizes[0].awardYear,
+                    name2: res.data.nobelPrizes[0].laureates[1].knownName.en,
+                    name3: res.data.nobelPrizes[0].laureates[2].knownName.en,
+                    category: res.data.nobelPrizes[0].category.en,
+                    awardYear: res.data.nobelPrizes[0].awardYear,
                     // category: res.data.nobelPrize?.category?.en,
                     // nobelPrizes?nobelPrizeCategory=eco
                     // motivation: res.data.nobelPrizes[0]['laureates'][0]['motivation']['en']
@@ -82,18 +88,27 @@ export class CardsByGenre extends Component {
                         Category:
                         <input type="text" value={this.state.value} onChange={this.handleChange} />
                     </label> */}
-                     <label>
-                      ECOWINNER Year:
-                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    <label>
+                        Award Year Economics:
+                        <input type="text" name="year" value={this.state.value} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
+                    {/* <label>
+                        Category:
+                        <input type="text" name="category" value={this.state.category} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" /> */}
                 </form>
                 <Card>
                     {/* <Card.Title> CAT:  {this.state.category} </Card.Title> */}
                     <Card.Title> NAME:  {this.state.name} </Card.Title>
-                    {/* <Card.Title> AWARDYEAR:  {this.state.awardYear} </Card.Title>
-                    <Card.Title> YEAR:  {this.state.value2} </Card.Title> */}
+                    <Card.Title>   {this.state.name2} </Card.Title>
+                    <Card.Title>   {this.state.name3} </Card.Title>
+                    <Card.Title> CAT:  {this.state.category} </Card.Title>
+                    <Card.Title> AWARDYEAR:  {this.state.awardYear} </Card.Title>
+                    {/*   <Card.Title> YEAR:  {this.state.value2} </Card.Title> */}
                 </Card>
+
             </div>
         )
     }
