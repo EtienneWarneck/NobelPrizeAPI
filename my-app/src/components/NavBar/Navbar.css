@@ -2,7 +2,7 @@
     --yellow: #BB8A35;
 } */
 
-.navbar-light, .navbar-brand {
+.navbar-light .navbar-brand {
     /* color: var(--yellow); */
     /* color:  #BB8A35; */
     color:  rgba(187, 138,53)

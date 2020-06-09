@@ -8,7 +8,10 @@ export class CardsByGenre extends Component {
         super()
         this.state = {
             value: "", // the value typed in input
-            category: "" // the category from the API
+            // value2: "",
+            category: "", // the category from the API
+            awardYear: "",
+            name: ""
 
         }
 
@@ -16,42 +19,51 @@ export class CardsByGenre extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
-    componentDidMount() {
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?' + "category=eco")
-            .then(res => {
-                console.log("RES.DATA", res.data)
-                // console.log("CAT", res.data.nobelPrizes[0].category);
+    // componentDidMount() {
+    //     axios.get('http://api.nobelprize.org/2.0/nobelPrizes?nobelPrizeYear')
+    //         .then(res => {
+    //             console.log("RES.DATA", res.data)
+    //             // console.log("CAT", res.data.nobelPrizes[0].category);
 
-                this.setState({
-                    // allCards: res.data.nobelPrizes,
-                    // name: res.data.nobelPrizes[0]['laureates'][0]['knownName']['en'],
-                    // awardYear: res.data.nobelPrizes[0].awardYear,
-                    value: res.data.nobelPrizes?.category?.en,
-                    // motivation: res.data.nobelPrizes[0]['laureates'][0]['motivation']['en']
-                })
-            }).
-            catch(err => console.log(err))
-    };
+    //             this.setState({
+    //                 // category: res.data.nobelPrizes[0],
+    //                 // allCards: res.data.nobelPrizes,
+    //                 // name: res.data.nobelPrizes[0]['laureates'][0]['knownName']['en'],
+    //                 // awardYear: res.data.nobelPrizes[0].awardYear,
+    //                 // motivation: res.data.nobelPrizes[0]['laureates'][0]['motivation']['en']
+    //             })
+    //         }).
+    //         catch(err => console.log(err))
+    // };
 
     handleChange(event) { //handleChange runs on every keystroke to update the React state of value
         this.setState({ value: event.target.value });
         console.log("YOU'RE TYPPING")
     }
+    // handleChange2(event) { //handleChange runs on every keystroke to update the React state of value
+    //     this.setState({ value: event.target.value });
+    //     console.log("YOU'RE TYPPING 2")
+    // }
 
     handleSubmit(event) {
+        // alert('You submitted:' + this.state.value);
         event.preventDefault();
         console.log("YOU'RE SUBMITTING")
-        alert('You submitted: ' + this.state.value);
 
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?/nobelPrizeCategory=?' + this.state.category)
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?nobelPrizeYear=' + this.state.value + '&nobelPrizeCategory=eco')
             .then(res => {
-                // console.log("RES.DATA SUBMIT", res.data)
-                // console.log("CAT", res.data.nobelPrizes[0].category.en)
+                console.log("RES.DATA SUBMIT", res.data)
+                // console.log("CAT", res.data.nobelPrize?.category?.en)
+                // console.log("AWARDYEAR", res.data.nobelPrizes.category.year)
+                console.log('NAME', res.data.nobelPrizes[0].laureates[0].knownName.en,)
+
                 // if (res.data === undefined) {
                 this.setState({
-                    // name: res.data.nobelPrizes[0]['laureates'][0]['knownName']['en'],
+                    // category: res.data.nobelPrizes?.category?.en
+                    name: res.data.nobelPrizes[0].laureates[0].knownName.en,
                     // awardYear: res.data.nobelPrizes[0].awardYear,
-                    category: res.data.nobelPrizes?.category?.en,
+                    // category: res.data.nobelPrize?.category?.en,
+                    // nobelPrizes?nobelPrizeCategory=eco
                     // motivation: res.data.nobelPrizes[0]['laureates'][0]['motivation']['en']
                 })
                 // }
@@ -66,14 +78,21 @@ export class CardsByGenre extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
+                    {/* <label>
                         Category:
+                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    </label> */}
+                     <label>
+                      ECOWINNER Year:
                         <input type="text" value={this.state.value} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
                 <Card>
-                    <Card.Title> {this.state.value} </Card.Title>
+                    {/* <Card.Title> CAT:  {this.state.category} </Card.Title> */}
+                    <Card.Title> NAME:  {this.state.name} </Card.Title>
+                    {/* <Card.Title> AWARDYEAR:  {this.state.awardYear} </Card.Title>
+                    <Card.Title> YEAR:  {this.state.value2} </Card.Title> */}
                 </Card>
             </div>
         )
