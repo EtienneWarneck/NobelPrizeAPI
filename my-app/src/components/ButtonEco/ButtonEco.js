@@ -5,17 +5,11 @@ import Button from 'react-bootstrap/Button';
 import WinnerCard from '../WinnerCard/WinnerCard'
 
 export class ButtonEco extends Component {
-
-    constructor() {
-        super()
-        this.state = {
-            allCardsEco: [],
-        }
-        this.handleClick = this.handleClick.bind(this);
-
+    state = {
+        allCardsEco: [],
     }
 
-    handleClick() {
+    handleClick = () => {
         axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=100&sort=desc&nobelPrizeCategory=eco&format=json&csvLang=en')
             .then(res => {
                 // console.log("RES.DATA", res.data) //all eco posts
