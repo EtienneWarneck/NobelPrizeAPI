@@ -5,7 +5,7 @@ import axios from 'axios';
 import WinnerCard from '../WinnerCard/WinnerCard'
 import Button from '../Button/Button'
 
-//BIND EACH BUTTON TO SOME STATE (CATEGORY OF PRIZE)
+
 
 const Buttons = props => {
     // console.log(props);
@@ -102,7 +102,9 @@ const Buttons = props => {
         value={e.toString()}
         award={e.awardYear}  // YEAR
         category={e.category?.en} // -- PRIZE CATEGORY -- //
-        name={e.laureates[0].knownName?.en} // NAME OF WINNER
+        name={e.laureates[0].knownName?.en} 
+        onClick={this.handleClick}
+        // NAME OF WINNER
         // motivation={e.laureates[0].motivation?.en}
         // value={e.category}
         // award={e.award}  // YEAR

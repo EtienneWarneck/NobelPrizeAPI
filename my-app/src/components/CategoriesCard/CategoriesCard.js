@@ -1,14 +1,13 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import './WinnerCard.css';
 // import Button from 'react-bootstrap/Button';
 // import Buttons from '../Buttons/Buttons'
 
-function WinnerCard(props) {
-    console.log("PROPS from WinnerCard", props)
+function CategoriesCard(props) {
+    console.log("PROPS", props)
     return (
         <div>
-            <Card className="col bg-light mb-2 mt-2" >
+            <Card className="col bg-light mb-2 mt-2 d-flex justify-content-center">
                 <Card.Body className="bg-light">
                     <Card.Title>Name: {props.name}</Card.Title>
                     <Card.Text>Award Year: {props.awardYear}</Card.Text>
@@ -20,4 +19,4 @@ function WinnerCard(props) {
     )
 }
 
-export default WinnerCard;
+export default CategoriesCard;

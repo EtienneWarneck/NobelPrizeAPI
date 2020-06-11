@@ -10,7 +10,8 @@ export class ButtonEco extends Component {
     }
 
     handleClick = () => {
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=100&sort=desc&nobelPrizeCategory=eco&format=json&csvLang=en')
+        console.log("click")
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=3&sort=desc&nobelPrizeCategory=eco&format=json&csvLang=en')
             .then(res => {
                 // console.log("RES.DATA", res.data) //all eco posts
                 // console.log("AWARDYEAR", res.data.nobelPrizes[0].awardYear) //OK

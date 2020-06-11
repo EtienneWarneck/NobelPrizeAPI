@@ -16,7 +16,6 @@ export class CardsByGenre extends Component {
             name2: "",
             name3: "",
             allCardsEco: ""
-
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -46,7 +45,6 @@ export class CardsByGenre extends Component {
         });
         console.log("YOU'RE TYPPING")
     }
-
 
     handleSubmit(event) {
         // alert('You submitted:' + this.state.value);

@@ -8,9 +8,12 @@ import './App.css';
 import Navbar from './components/NavBar/NavBar';
 // import Button from 'react-bootstrap/Button';
 // import CardsWinner from './components/WinnerCard/WinnerCard';
-import AllCardsByGenre from './components/AllCardsByGenre/AllCardsByGenre';
-import CardsByGenre from './components/CardsByGenre/CardsByGenre';
+// import AllCardsByGenre from './components/AllCardsByGenre/AllCardsByGenre';
+// import CardsByGenre from './components/CardsByGenre/CardsByGenre';
 import ButtonEco from './components/ButtonEco/ButtonEco';
+import ButtonsCategories from './components/ButtonsCategories/ButtonsCategories';
+import CategoriesCard from './components/CategoriesCard/CategoriesCard'
+// import WinnerCard from './components/WinnerCard.'
 // import axios from 'axios';
 
 class App extends Component {
@@ -41,11 +44,14 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/cards" render={(props) => <CardsWinner {...props} cardsData={this.state.cardsData} />} />
         </Router> */}
-        <div className="container d-flex">
-          <CardsByGenre />
+        {/* <div className="container" > */}
+          <ButtonsCategories />
+          {/* <CardsByGenre /> */}
           {/* <AllCardsByGenre /> */}
-          <ButtonEco />
-        </div>
+          {/* <ButtonEco /> */}
+          {/* <CategoriesCard/> */}
+          {/* <WinnerCard/> */}
+        {/* </div> */}
       </div>
     );
   }
