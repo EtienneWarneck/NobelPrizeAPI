@@ -37,21 +37,21 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Navbar />
         {/* <SearchBar /> */}
         {/* <Router>
           <Route exact path="/" component={Home} />
           <Route path="/cards" render={(props) => <CardsWinner {...props} cardsData={this.state.cardsData} />} />
         </Router> */}
-        {/* <div className="container" > */}
-          <ButtonsCategories />
+        <div className="container d-flex" >
           {/* <CardsByGenre /> */}
           {/* <AllCardsByGenre /> */}
           {/* <ButtonEco /> */}
+          <ButtonsCategories/>
           {/* <CategoriesCard/> */}
           {/* <WinnerCard/> */}
-        {/* </div> */}
+        </div>
       </div>
     );
   }

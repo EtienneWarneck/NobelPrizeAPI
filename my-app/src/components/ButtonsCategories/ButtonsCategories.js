@@ -10,22 +10,24 @@ import './ButtonsCategories.css'
 export class ButtonsCategories extends Component {
     state = {
         allCards: [],
-        category: []
-    };
+        category: ''
 
-    handleClick = (event) => {
-        // event.preventDefault();
+    }
+
+    handleClick = (buttonValue) => {
+        // only 3 first letters of the button to match categories in the  API:
+        buttonValue = buttonValue.slice(0, 3).toLowerCase();
+
         console.log("HANDLECLICK")
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=2&sort=desc&nobelPrizeCategory=' + this.state.category + '&format=json&csvLang=en')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=10&sort=desc&nobelPrizeCategory=' + buttonValue + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
-
                 console.log(categoryData)
+                // console.log("CATEGORY", categoryData?.category?.en)
 
                 this.setState({
                     allCards: categoryData,
-                    // category:  
-
+                    category: buttonValue
                 })
             }).
             catch(err => console.log(err))
@@ -34,26 +36,24 @@ export class ButtonsCategories extends Component {
     render() {
 
         //BUTTONS CATEGORIES
-        const allCategoriesButtons = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
-
-        const allCatMap = allCategoriesButtons.map((e) => {
+        const allCategoriesButtons = ["physics", "che", "Medicine", "Literature", "Peace", "Economics"];
+        const allCatMap = allCategoriesButtons.map((button) => {
             return < ButtonCategory
-                key={e.id}
-                value={e}
-                name={e}
-                onClick={this.handleClick}
+                key={button.toString()}
+                value={button}
+                name={button}
+                onClick={e => this.handleClick(e.target.value)}
             />
-
         })
 
         //CARDS 
-        const cards = this.state.allCards.map((e) => {
+        const cards = this.state.allCards.map((card) => {
             return <WinnerCard
-                key={e.id}
-                awardYear={e.awardYear}
-                category={e.category.en}
-                name={e.laureates[0].knownName?.en}
-                motivation={e.laureates[0].motivation?.en}
+                key={card.toString()}
+                awardYear={card.awardYear}
+                category={card.category.en}
+                name={card.laureates[0].knownName?.en}
+                motivation={card.laureates[0].motivation?.en}
             />
         })
 
@@ -62,7 +62,7 @@ export class ButtonsCategories extends Component {
                 <div className="btn-group w-100">
                     {allCatMap}
                 </div>
-                {cards}
+                    {cards}
             </div>
         )
     }
