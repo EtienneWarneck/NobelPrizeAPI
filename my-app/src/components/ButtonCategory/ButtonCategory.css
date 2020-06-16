@@ -1,15 +1,19 @@
 .buttons {
+    /* border: 1px solid red; */
     /* background-color: #e7b8b0a9; */
     background-color: white;
     /* opacity: 0.5; */
     color: black;
     font-size: 2em;
-    padding: 30px;
+    /* padding: 50px; */
     margin: 10px 20px 10px 20px;
-    flex: 1 500px;
+    flex: 1 400px;
+    height: 3em;
+    /* width: 150px; */
     /* border-radius: 0.2em; */
     border: none;
     border-bottom: 1px solid lightgrey;
+    justify-content: space-between;
 }
 
 .buttons:hover {

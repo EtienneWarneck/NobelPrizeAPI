@@ -9,16 +9,16 @@ import Radium from 'radium';
 const toolbar = props => {
 
     const style = {
-        color: '#BB8A35',
-        height: '10em',
         // border: '1px solid red',
+        color: '#BB8A35',
+        height: '8em',
         position: 'relative',
         borderBottom: '1px solid lightgrey',
     }
 
     const styleText = {
-        fontSize: '3em',
         // border: '1px solid red',
+        fontSize: '3em',
         textAlign: 'center',
         margin: '0',
         position: 'absolute',

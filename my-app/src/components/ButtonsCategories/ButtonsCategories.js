@@ -17,7 +17,6 @@ export class ButtonsCategories extends Component {
     handleClick = (buttonValue) => {
         // only 3 first letters of the button to match category in the API:
         buttonValue = buttonValue.slice(0, 3).toLowerCase();
-
         console.log("HANDLECLICK")
         axios.get('http://api.nobelprize.org/2.0/nobelPrizes?sort=desc&nobelPrizeCategory=' + buttonValue + '&format=json&csvLang=en')
             .then(res => {
@@ -65,7 +64,7 @@ export class ButtonsCategories extends Component {
                     {allCatMap}
                 </div >
                 <div>
-                    {cards}
+                    {/* {cards} */}
                 </div>
             </div>
         )
