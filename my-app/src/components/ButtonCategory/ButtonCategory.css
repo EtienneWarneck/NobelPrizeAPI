@@ -1,0 +1,21 @@
+.buttons {
+     /* background-color: #e7b8b0a9; */
+    
+     background-color: white;
+    /* opacity: 0.5; */
+    color: black;
+    font-size: 2em;
+    padding: 30px;
+    margin: 10px 20px 10px 20px;
+    flex: 1 500px;
+    /* border-radius: 0.2em; */
+    border: none;
+    border-bottom:1px solid  lightgrey;
+}
+
+.buttons:hover {
+    color: white;
+    background-color: #DDC59D;
+    opacity: 1;
+
+}

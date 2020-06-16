@@ -1,7 +1,14 @@
 .container {
     border: 1px solid red;
+    border-top: 1px solid lightgrey;
 }
 
-.row {
-
+.container__section {
+    /* border: 5px solid rgb(255, 81, 0); */
+    display: flex;
+    flex-flow: row wrap;
+    padding: 10px;
+    margin: auto;
+    align-items: center;
+    justify-content: space-around;
 }

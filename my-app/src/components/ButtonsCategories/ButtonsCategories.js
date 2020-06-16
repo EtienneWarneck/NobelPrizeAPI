@@ -10,19 +10,19 @@ import './ButtonsCategories.css'
 export class ButtonsCategories extends Component {
     state = {
         allCards: [],
-        category: ''
+        // category: ''
 
     }
 
     handleClick = (buttonValue) => {
-        // only 3 first letters of the button to match categories in the  API:
+        // only 3 first letters of the button to match category in the API:
         buttonValue = buttonValue.slice(0, 3).toLowerCase();
 
         console.log("HANDLECLICK")
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=10&sort=desc&nobelPrizeCategory=' + buttonValue + '&format=json&csvLang=en')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?sort=desc&nobelPrizeCategory=' + buttonValue + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
-                console.log(categoryData)
+                console.log("categoryData", res.data.nobelPrizes)
                 // console.log("CATEGORY", categoryData?.category?.en)
 
                 this.setState({
@@ -36,15 +36,15 @@ export class ButtonsCategories extends Component {
     render() {
 
         //BUTTONS CATEGORIES
-        const allCategoriesButtons = ["physics", "che", "Medicine", "Literature", "Peace", "Economics"];
-        const allCatMap = allCategoriesButtons.map((button) => {
-            return < ButtonCategory
+        const allCategoriesButtons = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
+        const allCatMap = allCategoriesButtons.map(button => 
+             < ButtonCategory
                 key={button.toString()}
                 value={button}
                 name={button}
                 onClick={e => this.handleClick(e.target.value)}
             />
-        })
+        )
 
         //CARDS 
         const cards = this.state.allCards.map((card) => {
@@ -58,8 +58,11 @@ export class ButtonsCategories extends Component {
         })
 
         return (
-            <div className="container">
-                <div className="btn-group w-100">
+            // <div className="container">
+            //     <div className="btn-group w-100">
+            <div>
+            <div className="container__section">
+
                     {allCatMap}
                 </div>
                     {cards}
