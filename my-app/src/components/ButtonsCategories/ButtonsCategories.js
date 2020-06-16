@@ -37,8 +37,8 @@ export class ButtonsCategories extends Component {
 
         //BUTTONS CATEGORIES
         const allCategoriesButtons = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
-        const allCatMap = allCategoriesButtons.map(button => 
-             < ButtonCategory
+        const allCatMap = allCategoriesButtons.map(button =>
+            < ButtonCategory
                 key={button.toString()}
                 value={button}
                 name={button}
@@ -60,12 +60,13 @@ export class ButtonsCategories extends Component {
         return (
             // <div className="container">
             //     <div className="btn-group w-100">
-            <div>
-            <div className="container__section">
-
+            <div className="container__main">
+                <div className="container__section">
                     {allCatMap}
-                </div>
+                </div >
+                <div>
                     {cards}
+                </div>
             </div>
         )
     }

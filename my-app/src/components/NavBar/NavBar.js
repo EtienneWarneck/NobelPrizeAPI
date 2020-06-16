@@ -1,17 +1,39 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar'
+// import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import './Navbar.css';
 import Nav from 'react-bootstrap/Nav'
-
+import Radium from 'radium';
 
 const toolbar = props => {
+
+    const style = {
+        color: '#BB8A35',
+        height: '10em',
+        // border: '1px solid red',
+        position: 'relative',
+        borderBottom: '1px solid lightgrey',
+    }
+
+    const styleText = {
+        fontSize: '3em',
+        // border: '1px solid red',
+        textAlign: 'center',
+        margin: '0',
+        position: 'absolute',
+        top: '20%',
+        width: '100%'
+    }
+
     return (
-        <Navbar bg="" expand="lg" className="navbar d-flex justify-content-center" >
+        // <Navbar bg="" expand="lg" className="navbar d-flex justify-content-center" >
+        <div style={style}>
             {/* <Container className="col-6"> */}
-       {/* <Row className="col-12 "> */}
-            <Navbar.Brand className="navbar-brand  py-5 col-12 text-center">BOOKS from Nobel Prize Winners</Navbar.Brand>
+            {/* <Row className="col-12 "> */}
+            {/* <Navbar.Brand className="navbar-brand  py-5 col-12 text-center ">BOOKS from Nobel Prize Winners</Navbar.Brand>
+             */}
+            <div style={styleText}>BOOKS from Nobel Prize Winners</div>
             {/* <Navbar.Text className="navbar-text bg-info text-center">TEST TEST TEST</Navbar.Text> */}
             {/* <Nav.Link href="#link">Chemistry</Nav.Link>
             <Nav.Link href="#link">Economics</Nav.Link>
@@ -22,12 +44,12 @@ const toolbar = props => {
             {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             </Navbar.Collapse> */}
-          {/* </Row>  */}
+            {/* </Row>  */}
             {/* </Container>/\ */}
-        </Navbar>
-
+            {/* </Navbar> */}
+        </div>
     )
 }
 
-export default toolbar;
+export default Radium(toolbar);
 

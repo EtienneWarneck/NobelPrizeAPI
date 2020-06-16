@@ -1,6 +1,6 @@
-.container {
-    border: 1px solid red;
-    border-top: 1px solid lightgrey;
+.container__main {
+    /* border: 1px solid red; */
+    /* border-top: 1px solid lightgrey; */
 }
 
 .container__section {

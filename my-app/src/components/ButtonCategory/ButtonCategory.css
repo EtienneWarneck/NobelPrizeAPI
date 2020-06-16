@@ -1,7 +1,6 @@
 .buttons {
-     /* background-color: #e7b8b0a9; */
-    
-     background-color: white;
+    /* background-color: #e7b8b0a9; */
+    background-color: white;
     /* opacity: 0.5; */
     color: black;
     font-size: 2em;
@@ -10,12 +9,18 @@
     flex: 1 500px;
     /* border-radius: 0.2em; */
     border: none;
-    border-bottom:1px solid  lightgrey;
+    border-bottom: 1px solid lightgrey;
 }
 
 .buttons:hover {
     color: white;
     background-color: #DDC59D;
     opacity: 1;
+    /* border-bottom:1px solid lightgrey; */
+}
 
+.buttons:focus {
+    /* outline-color: grey; */
+    /* outline-style: ; */
+ outline: none;
 }
