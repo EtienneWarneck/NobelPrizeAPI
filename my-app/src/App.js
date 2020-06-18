@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 // import SearchBar from './components/SearchBar/SearchBar'
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import Home from './components/Home/Home';
 // import cardsDisplay from './components/CardsDisplay/CardsDisplay';
 // import { Link } from 'react-router-dom';
@@ -10,9 +10,9 @@ import Navbar from './components/NavBar/NavBar';
 // import CardsWinner from './components/WinnerCard/WinnerCard';
 // import AllCardsByGenre from './components/AllCardsByGenre/AllCardsByGenre';
 // import CardsByGenre from './components/CardsByGenre/CardsByGenre';
-import ButtonEco from './components/ButtonEco/ButtonEco';
 import ButtonsCategories from './components/ButtonsCategories/ButtonsCategories';
-import CategoriesCard from './components/CategoriesCard/CategoriesCard'
+import Buttons from './containers/Buttons/Buttons';
+import Cards from './containers/Cards/Cards'
 // import WinnerCard from './components/WinnerCard.'
 // import axios from 'axios';
 
@@ -38,20 +38,19 @@ class App extends Component {
   render() {
     return (
       <div >
-        <Navbar />
+        {/* <Navbar /> */}
         {/* <SearchBar /> */}
-        {/* <Router>
-          <Route exact path="/" component={Home} />
-          <Route path="/cards" render={(props) => <CardsWinner {...props} cardsData={this.state.cardsData} />} />
-        </Router> */}
-        <div className="container d-flex" >
-          {/* <CardsByGenre /> */}
-          {/* <AllCardsByGenre /> */}
-          {/* <ButtonEco /> */}
-          <ButtonsCategories/>
-          {/* <CategoriesCard/> */}
-          {/* <WinnerCard/> */}
-        </div>
+         <BrowserRouter>
+          <Route path="/" component={Navbar} />
+          <Route exact path="/" component={Buttons} />
+          <Route exact path="/cards" component={Cards} />
+          {/* <Route path="/cards" render={(props) => <CardsWinner {...props} cardsData={this.state.cardsData} />} /> */}
+        </BrowserRouter> 
+        {/* <div className="container d-flex" >
+
+          <Buttons />
+
+        </div> */}
       </div>
     );
   }

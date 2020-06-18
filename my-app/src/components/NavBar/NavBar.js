@@ -8,6 +8,7 @@ import Radium from 'radium';
 
 const toolbar = props => {
 
+    // styling div with Radium
     const style = {
         // border: '1px solid red',
         color: '#BB8A35',
@@ -33,7 +34,7 @@ const toolbar = props => {
             {/* <Row className="col-12 "> */}
             {/* <Navbar.Brand className="navbar-brand  py-5 col-12 text-center ">BOOKS from Nobel Prize Winners</Navbar.Brand>
              */}
-            <div style={styleText}>BOOKS from Nobel Prize Winners</div>
+            <div style={styleText}>Nobel Prize Laureates</div>
             {/* <Navbar.Text className="navbar-text bg-info text-center">TEST TEST TEST</Navbar.Text> */}
             {/* <Nav.Link href="#link">Chemistry</Nav.Link>
             <Nav.Link href="#link">Economics</Nav.Link>

@@ -10,9 +10,16 @@ import './ButtonsCategories.css'
 export class ButtonsCategories extends Component {
     state = {
         allCards: [],
-        // category: ''
+        category: ''
 
     }
+
+    // passButtonValue = (buttonValue) => {
+    //     buttonValue = buttonValue.slice(0, 3).toLowerCase();
+    //     this.setState({
+    //         category: buttonValue
+    //     })
+    // }
 
     handleClick = (buttonValue) => {
         // only 3 first letters of the button to match category in the API:
@@ -61,10 +68,10 @@ export class ButtonsCategories extends Component {
             //     <div className="btn-group w-100">
             <div className="container__main">
                 <div className="container__section">
-                    {allCatMap}
+                    {/* {allCatMap} */}
                 </div >
                 <div>
-                    {/* {cards} */}
+                    {cards}
                 </div>
             </div>
         )
