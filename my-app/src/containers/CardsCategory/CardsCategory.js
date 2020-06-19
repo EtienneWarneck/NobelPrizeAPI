@@ -7,8 +7,6 @@ class Cards extends Component {
         allCards: []
     }
 
-
-
     // passButtonValue = (buttonValue) => {
     //     buttonValue = buttonValue.slice(0, 3).toLowerCase();
     //     this.setState({

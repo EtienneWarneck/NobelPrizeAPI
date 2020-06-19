@@ -1,9 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import ButtonCategory from '../ButtonCategory/ButtonCategory';
-import CategoriesCard from '../CategoriesCard/CategoriesCard';
 import WinnerCard from '../WinnerCard/WinnerCard'
 import './ButtonsCategories.css'
 
@@ -30,7 +27,6 @@ export class ButtonsCategories extends Component {
                 const categoryData = res.data.nobelPrizes;
                 console.log("categoryData", res.data.nobelPrizes)
                 // console.log("CATEGORY", categoryData?.category?.en)
-
                 this.setState({
                     allCards: categoryData,
                     category: buttonValue

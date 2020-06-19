@@ -1,5 +1,5 @@
 .container__section {
-    /* border:1px solid rgb(255, 81, 0); */
+    border:1px solid rgb(255, 81, 0);
     border-top: 1px solid lightgrey;
     display: flex;
     flex-flow: row wrap;

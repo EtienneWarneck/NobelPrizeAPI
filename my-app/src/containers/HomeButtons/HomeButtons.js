@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import './HomeButtons.css';
 import ButtonCategory from '../../components/ButtonCategory/ButtonCategory'
 
 
 //RESTRUCTURING TO SINGLE OUT THE CATEGORIES BUTTONS 
-class Buttons extends Component {
+class HomeButtons extends Component {
 
     handleClick = (buttonValue) => {
+        console.log("PROPS", this.props)
         // only 3 first letters of the button to match category in the API:
         buttonValue = buttonValue.slice(0, 3).toLowerCase();
-        // console.log("HANDLECLICK")
+        console.log("HANDLECLICK")
         axios.get('http://api.nobelprize.org/2.0/nobelPrizes?sort=desc&nobelPrizeCategory=' + buttonValue + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
@@ -42,4 +44,4 @@ class Buttons extends Component {
     }
 }
 
-export default Buttons
+export default HomeButtons;
