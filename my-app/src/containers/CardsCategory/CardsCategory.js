@@ -4,18 +4,15 @@ import WinnerCard from '../../components/WinnerCard/WinnerCard'
 
 class Cards extends Component {
     state = {
-        allCards: []
+        allCards: [],
+        category: null
     }
 
-    // passButtonValue = (buttonValue) => {
-    //     buttonValue = buttonValue.slice(0, 3).toLowerCase();
-    //     this.setState({
-    //         category: buttonValue
-    //     })
-    // }
-
     componentDidMount() {
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?sort=desc&nobelPrizeCategory=eco&format=json&csvLang=en')
+        console.log("CARDS CATEGORY", this.props)
+        let category = this.props.match.params.category_name;
+
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
                 console.log("categoryData", res.data.nobelPrizes)
@@ -23,18 +20,18 @@ class Cards extends Component {
 
                 this.setState({
                     allCards: categoryData,
-                    // category: buttonValue
+                    //<fetch category from the API that your router provides>
+                    category: this.props.match.params.category_name
+
                 })
             }).
             catch(err => console.log(err))
     };
 
-
     render() {
-
         const cards = this.state.allCards.map((card) => {
             return <WinnerCard
-                key={card.toString()}
+                key={card.id}
                 awardYear={card.awardYear}
                 category={card.category.en}
                 name={card.laureates[0].knownName?.en}
