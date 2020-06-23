@@ -1,11 +1,10 @@
-.container__main {
-    /* border: 3px solid red;
-     */
-    /* border-top: 1px solid lightgrey; */
+/* .container__main {
+    border: 3px solid red;
+ border-top: 1px solid lightgrey; 
 }
 
 .container__section {
-    /* border:1px solid rgb(255, 81, 0); */
+    border:1px solid rgb(255, 81, 0); 
     border-top: 1px solid lightgrey;
     display: flex;
     flex-flow: row wrap;
@@ -14,4 +13,4 @@
     margin-top: 4em;
     align-items: center;
     justify-content: space-around;
-}
+} */

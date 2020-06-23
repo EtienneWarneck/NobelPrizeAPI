@@ -7,15 +7,19 @@ import './WinnerCard.css';
 function WinnerCard(props) {
     console.log("PROPS from WinnerCard", props)
     return (
-        <div>
-            <Card className="col bg-light mb-2 mt-2" >
-                <Card.Body className="bg-light">
-                    <Card.Title>Name: {props.name}</Card.Title>
-                    <Card.Text>Award Year: {props.awardYear}</Card.Text>
-                    <Card.Text>Category: {props.category}</Card.Text>
-                    <Card.Text>Motivation:{props.motivation}</Card.Text>
+        <div className='container'>
+            <div className="row justify-content-center">
+            <Card className="cols-12 col-md-8 p-0 m-4 mb-3 gold">
+                <Card.Header className="text-black" as="h5">{props.category} Laureate {props.awardYear}</Card.Header>
+                <Card.Body className="white">
+                    {/* <Card.Title className="m-3 text-muted">aaaa</Card.Title> */}
+                    <Card.Title  className="m-3" as="h2">{props.name}</Card.Title>
+                    <Card.Text className=" m-3" as="h5">{props.motivation}</Card.Text>
+                    {/* <Card.Subtitle></Card.Subtitle> */}
                 </Card.Body>
+                {/* <Card.Footer></Card.Footer> */}
             </Card>
+            </div>
         </div>
     )
 }

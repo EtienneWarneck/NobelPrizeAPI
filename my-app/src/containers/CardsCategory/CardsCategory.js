@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import classes from './CardsCategory.css';
 import WinnerCard from '../../components/WinnerCard/WinnerCard'
+// import HomeButtons from "../HomeButtons/HomeButtons"
 
 class Cards extends Component {
     state = {
@@ -31,6 +33,7 @@ class Cards extends Component {
     render() {
         const cards = this.state.allCards.map((card) => {
             return <WinnerCard
+                // className={}
                 key={card.id}
                 awardYear={card.awardYear}
                 category={card.category.en}
@@ -41,7 +44,12 @@ class Cards extends Component {
 
         return (
             <div>
-                {cards}
+                {/* <div className="container__section">
+                    {allCatMap}
+                </div > */}
+                <div>
+                    {cards}
+                </div>
             </div>
         )
     }
