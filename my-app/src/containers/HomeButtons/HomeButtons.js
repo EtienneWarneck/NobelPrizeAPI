@@ -20,7 +20,7 @@ class HomeButtons extends Component {
         //     category: buttonValue
         // })
         //Change the route to /cards/<buttonValue>
-        this.props.history.push("/cards/" + buttonValue);
+        this.props.history.push("/" + buttonValue);
         // }).
         // catch(err => console.log(err))
     };
