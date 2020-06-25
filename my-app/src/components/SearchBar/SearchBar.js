@@ -5,21 +5,17 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
+
 function SearchBar() {
     return (
 
-        <Card className="bg-light ">
-            <Form className="form-group form-row">
-                <label htmlFor="" className="col-form-label text-md-left col md-2">Year:</label>
-                <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-                {/* <Button type="submit">Submit</Button> */}
-            {/* </Form>
-            <Form inline> */}
-            <label htmlFor="" className="col-form-label text-md-left col md-2">Name:</label>
-                <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-                <Button type="submit" className="">Submit</Button>
-            </Form>
-        </Card>
+        <Form className="form-row p-0 m-3 mt-5 mb-5 justify-content-center">
+            <Form.Label htmlFor="" className="col-form-label text-right col-auto">Year :</Form.Label>
+            <Form.Control type="text" placeholder="" className="col-2 text-center "/>
+            <Form.Label htmlFor="" className="col-form-label ml-2 text-right col-auto">Name :</Form.Label>
+            <Form.Control type="text" placeholder="" className="col-4"/>
+            <Button type="submit" className=" btn ml-4 col-2 gold">Search</Button>
+        </Form>
     )
 }
 
