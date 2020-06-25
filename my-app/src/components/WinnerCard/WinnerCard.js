@@ -9,7 +9,7 @@ function WinnerCard(props) {
     return (
         <div className='container'>
             <div className="row justify-content-center">
-            <Card className="cols-12 col-md-8 p-0 m-4 mb-3 gold">
+            <Card className="cols-12 col-md-8 p-0 m-4 mb-3 gold border-dark">
                 <Card.Header className="text-black" as="h5">{props.category} Laureate </Card.Header>
                 <Card.Body className="white">
                     {/* <Card.Subtitle>{props.awardYear}</Card.Subtitle> */}
