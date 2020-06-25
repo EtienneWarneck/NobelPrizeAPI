@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import axios from 'axios';
-import './HomeButtons.css';
+import classes from './HomeButtons.module.css';
 import ButtonCategory from '../../components/ButtonCategory/ButtonCategory'
 
 //RESTRUCTURING TO SINGLE OUT THE CATEGORIES BUTTONS 
@@ -37,7 +37,7 @@ class HomeButtons extends Component {
 
         return (
             <div>
-                <div className="container__section">
+                <div className={classes.container__section}>
                     {allCatMap}
                 </div >
             </div>

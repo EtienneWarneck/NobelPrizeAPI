@@ -8,7 +8,7 @@ function buttonCategory(props) {
 
     return (
         <button
-         className={classes.buttons}
+         className={classes.b}
             // className=" btn btn-light d-inline m-2 border-dark rounded-0"
             name={props.name}
             onClick={props.onClick}

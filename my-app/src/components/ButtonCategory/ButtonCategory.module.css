@@ -1,4 +1,4 @@
-.buttons {
+.b {
     /* border: 1px solid red; */
     /* background-color: #e7b8b0a9; */
     background-color: white;
@@ -10,13 +10,13 @@
     flex: 1 400px;
     height: 3em;
     /* width: 150px; */
-    /* border-radius: 0.2em; */
+    border-radius: 0.1em;
     border: none;
     border-bottom: 1px solid lightgrey;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
-.buttons:hover {
+.b:hover {
     color: white;
     background-color: #DDC59D;
     opacity: 1;

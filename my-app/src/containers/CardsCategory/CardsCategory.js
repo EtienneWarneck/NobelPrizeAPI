@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import  classes from './CardsCategory.module.css';
+import classes from './CardsCategory.module.css';
 import WinnerCard from '../../components/WinnerCard/WinnerCard'
-import HomeButtons from "../HomeButtons/HomeButtons"
+import HomeButtons2 from "../HomeButtons2/HomeButtons2"
 import buttonCategory from "../../components/ButtonCategory/ButtonCategory"
 import SearchBar from '../../components/SearchBar/SearchBar';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 
-// const StyledDiv = styled.div`
-// border: 2px solid red;
-// `
+const StyledDiv = styled.div`
+border: 10px solid orange;
+display: inline;
+
+`
 
 class Cards extends Component {
     state = {
@@ -51,14 +53,13 @@ class Cards extends Component {
         })
 
         return (
-            <div className={classes.test1}> 
+            <div>
                 {/* <StyledDiv> */}
-                    {/* <HomeButtons className={classes.test} style={{width:"50%"}} ></HomeButtons> */}
-                    {/* <buttonCategory className={classes.test2}></buttonCategory> */}
+                    <HomeButtons2 />
                 {/* </StyledDiv> */}
-              <div>
-                  <SearchBar/>
-              </div>
+                <div>
+                    <SearchBar />
+                </div>
                 <div>
                     {cards}
                 </div>
