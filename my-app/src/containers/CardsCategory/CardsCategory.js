@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import classes from './CardsCategory.css';
+import  classes from './CardsCategory.module.css';
 import WinnerCard from '../../components/WinnerCard/WinnerCard'
-// import HomeButtons from "../HomeButtons/HomeButtons"
+import HomeButtons from "../HomeButtons/HomeButtons"
+import buttonCategory from "../../components/ButtonCategory/ButtonCategory"
+import SearchBar from '../../components/SearchBar/SearchBar';
+// import styled from 'styled-components';
+
+
+// const StyledDiv = styled.div`
+// border: 2px solid red;
+// `
 
 class Cards extends Component {
     state = {
@@ -43,10 +51,14 @@ class Cards extends Component {
         })
 
         return (
-            <div>
-                {/* <div className="container__section">
-                    {allCatMap}
-                </div > */}
+            <div className={classes.test1}> 
+                {/* <StyledDiv> */}
+                    {/* <HomeButtons className={classes.test} style={{width:"50%"}} ></HomeButtons> */}
+                    {/* <buttonCategory className={classes.test2}></buttonCategory> */}
+                {/* </StyledDiv> */}
+              <div>
+                  <SearchBar/>
+              </div>
                 <div>
                     {cards}
                 </div>
@@ -55,4 +67,4 @@ class Cards extends Component {
     }
 }
 
-export default Cards
+export default Cards;

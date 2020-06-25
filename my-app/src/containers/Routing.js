@@ -18,4 +18,4 @@ class Routing extends Component {
     }
 }
 
-export default Routing
+export default Routing;

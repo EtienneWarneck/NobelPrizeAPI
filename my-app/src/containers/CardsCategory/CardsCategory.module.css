@@ -1,0 +1,35 @@
+
+.test {
+    display: inline;
+    border-top: 10px solid lightgrey;
+    padding: 10px;
+    margin: auto;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(241, 10, 10); 
+    color: red;
+    /* font-size: 2em; */
+     margin: 10px 20px 10px 20px;
+    flex: 1 400px;
+    /* height: 3em; */
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    justify-content: space-between; 
+}
+
+
+.test1 {
+    border: 1px solid blue;
+}
+ 
+
+/* .ButtonCategory_buttons__2igj2 {
+    display: inline;
+    background-color: red;
+    border: 1px solid red;
+} */
+
+/* .container__section2 {
+    width: 100%;
+    border: solid 1px red;
+} */

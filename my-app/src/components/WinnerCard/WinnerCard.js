@@ -10,12 +10,12 @@ function WinnerCard(props) {
         <div className='container'>
             <div className="row justify-content-center">
             <Card className="cols-12 col-md-8 p-0 m-4 mb-3 gold">
-                <Card.Header className="text-black" as="h5">{props.category} Laureate {props.awardYear}</Card.Header>
+                <Card.Header className="text-black" as="h5">{props.category} Laureate </Card.Header>
                 <Card.Body className="white">
-                    {/* <Card.Title className="m-3 text-muted">aaaa</Card.Title> */}
-                    <Card.Title  className="m-3" as="h2">{props.name}</Card.Title>
+                    {/* <Card.Subtitle>{props.awardYear}</Card.Subtitle> */}
+                    <Card.Title className="ml-3 mb-1 " as="h5">{props.awardYear}</Card.Title>
+                    <Card.Title  className=" mt-1 ml-3" as="h2">{props.name}</Card.Title>
                     <Card.Text className=" m-3" as="h5">{props.motivation}</Card.Text>
-                    {/* <Card.Subtitle></Card.Subtitle> */}
                 </Card.Body>
                 {/* <Card.Footer></Card.Footer> */}
             </Card>
