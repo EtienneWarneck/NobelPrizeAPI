@@ -10,7 +10,7 @@ const toolbar = props => {
 
     // styling div with Radium
     const style = {
-        // border: '1px solid red',
+        border: '1px solid red',
         color: '#BB8A35',
         height: '8em',
         position: 'relative',

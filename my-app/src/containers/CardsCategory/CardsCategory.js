@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import classes from './CardsCategory.module.css';
 import WinnerCard from '../../components/WinnerCard/WinnerCard'
-import HomeButtons2 from "../HomeButtons2/HomeButtons2"
+import HomeButtons from "../HomeButtons/HomeButtons"
 import buttonCategory from "../../components/ButtonCategory/ButtonCategory"
 import SearchBar from '../../components/SearchBar/SearchBar';
 import styled from 'styled-components';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 
-const StyledDiv = styled.div`
-border: 10px solid orange;
-display: inline;
-
-`
+// const StyledDiv = styled.div`
+// border: 10px solid orange;
+// display: inline;
+// `
 
 class Cards extends Component {
     state = {
         allCards: [],
-        category: null
+        category: null,
+        search: ''
     }
 
     componentDidMount() {
@@ -40,6 +42,12 @@ class Cards extends Component {
             catch(err => console.log(err))
     };
 
+    //for search bar
+    onChange = e => {
+        console.log("ON CHANGE")
+        this.setState({ search: e.target.value })
+    }
+
     render() {
         const cards = this.state.allCards.map((card) => {
             return <WinnerCard
@@ -50,15 +58,34 @@ class Cards extends Component {
                 name={card.laureates[0].knownName?.en}
                 motivation={card.laureates[0].motivation?.en}
             />
+        });
+
+        const filter = this.state.allCards.filter(card => {
+            return card.name.toLowerCase().includes(this.state.search.toLowerCase())
         })
 
+        const style = { display: 'inline', border: '10px solid orange', width: '100px' };
+
         return (
-            <div>
+            <div style={style}>
                 {/* <StyledDiv> */}
-                    <HomeButtons2 />
+                {/* <HomeButtons /> */}
                 {/* </StyledDiv> */}
                 <div>
-                    <SearchBar />
+                    {/* <SearchBar/>*/}
+                    <Form className="form-row p-0 m-3 mt-5 mb-5 justify-content-center" >
+                        <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
+                        <Form.Control type="text" placeholder="" className="col-2 text-center font-weight-bold border-dark " />
+                        <Form.Label htmlFor="" className="col-form-label ml-2 text-right col-auto font-weight-normal">NAME :</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder=""
+                            className="col-4 font-weight-bold border-dark"
+                            onChange={this.state.onChange}
+                            input={this.state.input}
+                        />
+                        <Button type="submit" variant="btn ml-4 col-2 outline-dark border-dark gold">SEARCH</Button>
+                    </Form>
                 </div>
                 <div>
                     {cards}
