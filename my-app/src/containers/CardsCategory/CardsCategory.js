@@ -43,10 +43,12 @@ class Cards extends Component {
     };
 
     //for search bar
-    onChange = e => {
-        console.log("ON CHANGE")
-        this.setState({ search: e.target.value })
+    onChange = event => {
+        console.log("ON CHANGE", event.target.value)
+        this.setState({ search: event.target.value })
     }
+
+    // onSubmit = 
 
     render() {
         const cards = this.state.allCards.map((card) => {
@@ -60,9 +62,11 @@ class Cards extends Component {
             />
         });
 
-        // const filter = this.state.allCards.filter(card => {
-        //     return card.name.toLowerCase().includes(this.state.search.toLowerCase())
-        // })
+        //Filter on allCards or on cards??
+        const filter = this.state.allCards.filter(a => {
+            // return a.laureates[0].knowName?.en.toLowerCase().includes(this.state.search.toLowerCase())
+            return a.laureates[0].knowName?.en.toLowerCase().indexOf(this.state.search) !== -1;
+        })
 
         const style = { display: 'inline', border: '10px solid orange', width: '100px' };
 
@@ -83,8 +87,13 @@ class Cards extends Component {
                             className="col-4 font-weight-bold border-dark"
                             onChange={this.onChange}
                             value={this.state.search}
+                        // x={this.filter}
                         />
-                        <Button type="submit" variant="btn ml-4 col-2 outline-dark border-dark gold">SEARCH</Button>
+                        {/* <Button
+                            type="submit"
+                            variant="btn ml-4 col-2 outline-dark border-dark gold"
+                            onSubmit={this.onSubmit}
+                        >SEARCH</Button> */}
                     </Form>
                 </div>
                 <div>
