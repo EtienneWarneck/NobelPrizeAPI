@@ -26,7 +26,7 @@ class Cards extends Component {
         console.log("CARDS CATEGORY", this.props)
         let category = this.props.match.params.category_name;
 
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=2&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
                 console.log("categoryData", res.data.nobelPrizes)
@@ -60,9 +60,9 @@ class Cards extends Component {
             />
         });
 
-        const filter = this.state.allCards.filter(card => {
-            return card.name.toLowerCase().includes(this.state.search.toLowerCase())
-        })
+        // const filter = this.state.allCards.filter(card => {
+        //     return card.name.toLowerCase().includes(this.state.search.toLowerCase())
+        // })
 
         const style = { display: 'inline', border: '10px solid orange', width: '100px' };
 
@@ -81,8 +81,8 @@ class Cards extends Component {
                             type="text"
                             placeholder=""
                             className="col-4 font-weight-bold border-dark"
-                            onChange={this.state.onChange}
-                            input={this.state.input}
+                            onChange={this.onChange}
+                            value={this.state.search}
                         />
                         <Button type="submit" variant="btn ml-4 col-2 outline-dark border-dark gold">SEARCH</Button>
                     </Form>
