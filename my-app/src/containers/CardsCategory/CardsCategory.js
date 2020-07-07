@@ -19,8 +19,14 @@ class Cards extends Component {
     state = {
         allCards: [],
         category: null,
-        search: ''
+        search: '',
+        cancel: ''
     }
+
+
+    // renderCard = card => {
+    //     const { search } = this.state;
+    //     var code = country.code.toLowerCase();
 
     componentDidMount() {
         console.log("CARDS CATEGORY", this.props)
@@ -48,12 +54,37 @@ class Cards extends Component {
         this.setState({ search: event.target.value })
     }
 
-    // onSubmit = 
+    onClick = e => {
+        // this.onChange();
+        // e.preventDefault();
+        console.log("ON CLICK", this.state);
+        let category = this.props.match.params.category_name;
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+            .then(res => {
+                const categoryData = res.data.nobelPrizes;
+                this.setState({
+                    allCards: categoryData,
+                    // category: this.props.match.params.category_name,
+
+                })
+            }).
+            catch(err => console.log(err))
+    }
 
     render() {
-        const cards = this.state.allCards.map((card) => {
+        const { search, allCards } = this.state;
+
+        let filterCardsbyYear = allCards.filter(card => {
+            // return card.laureates[0].knowName?.en.toLowerCase().includes(search.toLowerCase) !== -1;
+            // return card.awardYear.includes(search.toLowerCase) !== -1;
+            if (search === card.awardYear) {
+            return card.awardYear.includes(search.toLowerCase) !== -1;
+            }
+        })
+        console.log("FILTER CARDS", filterCardsbyYear);
+
+        let cards = filterCardsbyYear.map((card) => {
             return <WinnerCard
-                // className={}
                 key={card.id}
                 awardYear={card.awardYear}
                 category={card.category.en}
@@ -62,21 +93,15 @@ class Cards extends Component {
             />
         });
 
-        //Filter on allCards or on cards??
-        const filter = this.state.allCards.filter(a => {
-            // return a.laureates[0].knowName?.en.toLowerCase().includes(this.state.search.toLowerCase())
-            return a.laureates[0].knowName?.en.toLowerCase().indexOf(this.state.search) !== -1;
-        })
-
         const style = { display: 'inline', border: '10px solid orange', width: '100px' };
 
         return (
-            <div style={style}>
+            <div>
                 {/* <StyledDiv> */}
                 {/* <HomeButtons /> */}
                 {/* </StyledDiv> */}
                 <div>
-                    {/* <SearchBar/>*/}
+                    {/* <SearchBar />*/}
                     <Form className="form-row p-0 m-3 mt-5 mb-5 justify-content-center" >
                         <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
                         <Form.Control type="text" placeholder="" className="col-2 text-center font-weight-bold border-dark " />
@@ -85,15 +110,14 @@ class Cards extends Component {
                             type="text"
                             placeholder=""
                             className="col-4 font-weight-bold border-dark"
-                            onChange={this.onChange}
                             value={this.state.search}
-                        // x={this.filter}
+                            onChange={this.onChange}
                         />
-                        {/* <Button
-                            type="submit"
+                        <Button
+                            type="button"
                             variant="btn ml-4 col-2 outline-dark border-dark gold"
-                            onSubmit={this.onSubmit}
-                        >SEARCH</Button> */}
+                            onClick={this.onClick}
+                        >SEARCH</Button>
                     </Form>
                 </div>
                 <div>

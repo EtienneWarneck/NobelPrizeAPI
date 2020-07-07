@@ -8,10 +8,12 @@ class App extends Component {
   render() {
     return (
       <div >
-        <BrowserRouter>
-          <Routing />
-          {/* <Route path="/cards" render={(props) => <CardsWinner {...props} cardsData={this.state.cardsData} />} /> */}
-        </BrowserRouter>
+        <React.StrictMode>
+          <BrowserRouter>
+            <Routing />
+            {/* <Route path="/cards" render={(props) => <CardsWinner {...props} cardsData={this.state.cardsData} />} /> */}
+          </BrowserRouter>
+        </React.StrictMode>
       </div>
     );
   }

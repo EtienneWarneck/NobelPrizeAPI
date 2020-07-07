@@ -25,11 +25,11 @@ class HomeButtons extends Component {
         // catch(err => console.log(err))
     };
     render() {
-        const styleButton = {flex: '1 400px'};
+        // const styleButton = {flex: '1 400px'};
         const allCategoriesButtons = ["Physics", "Chemistry", "Medicine", "Literature", "Peace", "Economics"];
         const allCatMap = allCategoriesButtons.map(button =>
             < ButtonCategory
-                style={styleButton}
+                // style={styleButton}
                 key={button.toString()}
                 value={button}
                 name={button}
@@ -37,21 +37,21 @@ class HomeButtons extends Component {
             />
         )
 
-        const style = {
-            border: '10px solid red',
-            borderTop: '1px solid lightgrey',
-            display: 'flex',
-            flexFlow: 'row wrap',
-            padding: '10px',
-            margin: 'auto',
-            marginTop: '4em',
-            alignItems: 'center',
-            justifyContent: 'space-around'
-        }
+        // const style = {
+        //     border: '10px solid red',
+        //     borderTop: '1px solid lightgrey',
+        //     display: 'flex',
+        //     flexFlow: 'row wrap',
+        //     padding: '10px',
+        //     margin: 'auto',
+        //     marginTop: '4em',
+        //     alignItems: 'center',
+        //     justifyContent: 'space-around'
+        // }
         return (
 
-            // <div className={classes.container__section}>
-            <div style={style}>
+            <div className={classes.container__section}>
+            {/* <div style={style}> */}
                 {allCatMap}
             </div >
         )
