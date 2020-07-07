@@ -19,7 +19,8 @@ class Cards extends Component {
     state = {
         allCards: [],
         category: null,
-        search: '',
+        searchYear: '',
+        searchName: '',
         cancel: ''
     }
 
@@ -49,9 +50,19 @@ class Cards extends Component {
     };
 
     //for search bar
-    onChange = event => {
-        console.log("ON CHANGE", event.target.value)
-        this.setState({ search: event.target.value })
+    onChangeYear = e => {
+        e.preventDefault();
+        console.log("ON CHANGE", e.target.value)
+        this.setState({
+            searchYear: e.target.value
+        })
+    }
+    onChangeName = e => {
+        e.preventDefault();
+        console.log("ON CHANGE", e.target.value)
+        this.setState({
+            searchName: e.target.value
+        })
     }
 
     onClick = e => {
@@ -72,18 +83,20 @@ class Cards extends Component {
     }
 
     render() {
-        const { search, allCards } = this.state;
+        const { searchYear, searchName, allCards } = this.state;
 
-        let filterCardsbyYear = allCards.filter(card => {
+        let filterCards = allCards.filter(card => {
             // return card.laureates[0].knowName?.en.toLowerCase().includes(search.toLowerCase) !== -1;
             // return card.awardYear.includes(search.toLowerCase) !== -1;
-            if (search === card.awardYear) {
-            return card.awardYear.includes(search.toLowerCase) !== -1;
+            if (searchYear === card.awardYear || searchName === card.laureates[0].knownName?.en) {
+                return (
+                    card.awardYear.includes(searchYear.toLowerCase) !== -1 ||
+                    card.laureates[0].knownName?.en.includes(searchName.toLowerCase) !== -1
+                )
             }
         })
-        console.log("FILTER CARDS", filterCardsbyYear);
 
-        let cards = filterCardsbyYear.map((card) => {
+        let cards = filterCards.map((card) => {
             return <WinnerCard
                 key={card.id}
                 awardYear={card.awardYear}
@@ -104,14 +117,20 @@ class Cards extends Component {
                     {/* <SearchBar />*/}
                     <Form className="form-row p-0 m-3 mt-5 mb-5 justify-content-center" >
                         <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
-                        <Form.Control type="text" placeholder="" className="col-2 text-center font-weight-bold border-dark " />
+                        <Form.Control
+                            type="text"
+                            placeholder=""
+                            className="col-2 text-center font-weight-bold border-dark"
+                            value={this.state.searchYear}
+                            onChange={this.onChangeYear}
+                        />
                         <Form.Label htmlFor="" className="col-form-label ml-2 text-right col-auto font-weight-normal">NAME :</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder=""
                             className="col-4 font-weight-bold border-dark"
-                            value={this.state.search}
-                            onChange={this.onChange}
+                            value={this.state.searchName}
+                            onChange={this.onChangeName}
                         />
                         <Button
                             type="button"
