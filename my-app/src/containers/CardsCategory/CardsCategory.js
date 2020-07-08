@@ -33,7 +33,7 @@ class Cards extends Component {
         console.log("CARDS CATEGORY", this.props)
         let category = this.props.match.params.category_name;
 
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=2&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=50&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
                 console.log("categoryData", res.data.nobelPrizes)
@@ -102,11 +102,13 @@ class Cards extends Component {
                 awardYear={card.awardYear}
                 category={card.category.en}
                 name={card.laureates[0].knownName?.en}
+                // name1={card.laureates[1].knownName?.en}
+                // name2={card.laureates[2].knownName?.en}
                 motivation={card.laureates[0].motivation?.en}
             />
         });
 
-        const style = { display: 'inline', border: '10px solid orange', width: '100px' };
+        // const style = { display: 'inline', border: '10px solid orange', width: '100px' };
 
         return (
             <div>

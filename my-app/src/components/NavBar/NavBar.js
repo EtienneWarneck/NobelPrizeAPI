@@ -10,7 +10,7 @@ const toolbar = props => {
 
     // styling div with Radium
     const style = {
-        border: '1px solid red',
+        // border: '1px solid red',
         color: '#BB8A35',
         height: '8em',
         position: 'relative',
@@ -21,6 +21,7 @@ const toolbar = props => {
 
     const styleText = {
         // border: '1px solid red',
+        color:'#DDC59D',
         fontSize: '3em',
         textAlign: 'center',
         margin: '0',
@@ -42,7 +43,7 @@ return (
         <Nav.Link style={styleText} href='/'>Nobel Prize Laureates</Nav.Link>
         {/* <Navbar.Text className="navbar-text bg-info text-center">TEST TEST TEST</Navbar.Text> */}
         {/* <Nav.Link href="#link">Chemistry</Nav.Link> */}
-        <Nav.Link href="#link">Economics</Nav.Link>
+        {/* <Nav.Link href="#link">Economics</Nav.Link> */}
         {/*   <Nav.Link href="#link">Literature</Nav.Link>
             <Nav.Link href="#link">Medicine</Nav.Link>
             <Nav.Link href="#link">Peace</Nav.Link>

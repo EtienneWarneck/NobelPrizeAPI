@@ -53,6 +53,7 @@ class HomeButtons extends Component {
             <div className={classes.container__section}>
             {/* <div style={style}> */}
                 {allCatMap}
+            {/* </div > */}
             </div >
         )
     }
