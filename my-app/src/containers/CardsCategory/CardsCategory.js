@@ -90,9 +90,9 @@ class Cards extends Component {
             // return card.awardYear.includes(search.toLowerCase) !== -1;
             if (searchYear === card.awardYear || searchName === card.laureates[0].knownName?.en) {
                 return (
-                    card.awardYear.includes(searchYear.toLowerCase) !== -1 ||
-                    card.laureates[0].knownName?.en.includes(searchName.toLowerCase) !== -1
-                )
+                    card.awardYear.includes(searchYear.toLowerCase) ||
+                    card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
+                    )
             }
         })
 
