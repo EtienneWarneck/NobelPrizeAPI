@@ -86,14 +86,20 @@ class Cards extends Component {
         const { searchYear, searchName, allCards } = this.state;
 
         let filterCards = allCards.filter(card => {
-            // return card.laureates[0].knowName?.en.toLowerCase().includes(search.toLowerCase) !== -1;
-            // return card.awardYear.includes(search.toLowerCase) !== -1;
-            if (searchYear === card.awardYear || searchName === card.laureates[0].knownName?.en) {
+            //REGEX
+            card.forEach(entry => {
+                console.log(entry)
+                let regexp = /[a-z \s]+ /gi;
+                let result = entry.match(regexp);
+                console.log(result);
+            })
+
+           /* if (searchYear === card.awardYear || searchName === card.laureates[0].knownName?.en) {
                 return (
                     card.awardYear.includes(searchYear.toLowerCase) ||
                     card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
                     )
-            }
+            } */
         })
 
         let cards = filterCards.map((card) => {
