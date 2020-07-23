@@ -95,25 +95,12 @@ class Cards extends Component {
             // })
             // )
 
-            if (searchYear === card.awardYear) {
-                //  if (searchName === card.laureates[0].knownName?.en) { 
+            if (searchYear === card.awardYear || !searchYear) {
                 return (
-                    card.awardYear.includes(searchYear.toLowerCase) 
-                    ||
-                    card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
-                    )
-                }
-             if (!searchYear) {
-                return (
-                    card.awardYear.includes(searchYear.toLowerCase) 
-                    ||
                     card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
                     )
                 }
 
-            //     return (
-            //         card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
-            // )
         })
 
         let cards = filterCards.map((card) => {
