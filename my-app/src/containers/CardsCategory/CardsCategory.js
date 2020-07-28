@@ -52,21 +52,20 @@ class Cards extends Component {
     //for search bar
     onChangeYear = e => {
         e.preventDefault();
-        console.log("ON CHANGE", e.target.value)
+        // console.log("ON CHANGE", e.target.value)
         this.setState({
             searchYear: e.target.value
-        })
+        });
     }
     onChangeName = e => {
         e.preventDefault();
-        console.log("ON CHANGE", e.target.value)
+        // console.log("ON CHANGE", e.target.value)
         this.setState({
             searchName: e.target.value
         })
     }
 
     onClick = e => {
-        // this.onChange();
         // e.preventDefault();
         console.log("ON CLICK", this.state);
         let category = this.props.match.params.category_name;
@@ -80,6 +79,11 @@ class Cards extends Component {
                 })
             }).
             catch(err => console.log(err))
+    }
+
+    handleSubmit(event) {
+        console.log("SUBMIT")
+        event.preventDefault();
     }
 
     render() {
@@ -98,8 +102,8 @@ class Cards extends Component {
             if (searchYear === card.awardYear || !searchYear) {
                 return (
                     card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
-                    )
-                }
+                )
+            }
 
         })
 
@@ -124,7 +128,10 @@ class Cards extends Component {
                 {/* </StyledDiv> */}
                 <div>
                     {/* <SearchBar />*/}
-                    <Form className="form-row p-0 m-3 mt-5 mb-5 justify-content-center" >
+                    <Form
+                        className="form-row p-0 m-3 mt-5 mb-5 justify-content-center"
+                        onSubmit={this.handleSubmit}
+                    >
                         <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
                         <Form.Control
                             type="text"
@@ -142,7 +149,9 @@ class Cards extends Component {
                             onChange={this.onChangeName}
                         />
                         <Button
-                            type="button"
+                            // type="button"
+                            type="submit"
+                            value="Submit"
                             variant="btn ml-4 col-2 outline-dark border-dark gold"
                             onClick={this.onClick}
                         >SEARCH</Button>
