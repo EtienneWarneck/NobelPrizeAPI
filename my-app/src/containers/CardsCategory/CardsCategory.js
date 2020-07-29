@@ -20,8 +20,7 @@ class Cards extends Component {
         allCards: [],
         category: null,
         searchYear: '',
-        searchName: '',
-        cancel: ''
+        searchName: ''
     }
 
 
@@ -42,31 +41,30 @@ class Cards extends Component {
                 this.setState({
                     allCards: categoryData,
                     //<fetch category from the API that your router provides>
-                    category: this.props.match.params.category_name
-
+                    category: this.props.match.params.category_name,
                 })
             }).
             catch(err => console.log(err))
     };
 
-    //for search bar
     onChangeYear = e => {
-        e.preventDefault();
-        // console.log("ON CHANGE", e.target.value)
+        e.preventDefault(); //???
+        console.log("ON CHANGE", e.target.value)
+        console.log("ON CHANGE prevent", e.preventDefault)
         this.setState({
             searchYear: e.target.value
         });
     }
-    onChangeName = e => {
-        e.preventDefault();
-        // console.log("ON CHANGE", e.target.value)
-        this.setState({
-            searchName: e.target.value
-        })
-    }
+    // onChangeName = e => {
+    //     e.preventDefault(); //???
+    //     // console.log("ON CHANGE", e.target.value)
+    //     this.setState({
+    //         searchName: e.target.value
+    //     })
+    // }
 
-    onClick = e => {
-        // e.preventDefault();
+    onClickSearch = e => {
+        // e.preventDefault(); //???
         console.log("ON CLICK", this.state);
         let category = this.props.match.params.category_name;
         axios.get('http://api.nobelprize.org/2.0/nobelPrizes?sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
@@ -75,15 +73,28 @@ class Cards extends Component {
                 this.setState({
                     allCards: categoryData,
                     // category: this.props.match.params.category_name,
-
                 })
             }).
             catch(err => console.log(err))
     }
 
-    handleSubmit(event) {
+    onClickReset = e => {
+        this.setState({
+            allCards: [],
+            searchYear: '',
+            searchName: '',
+
+        });
+    }
+
+    handleSubmit = e => {
         console.log("SUBMIT")
-        event.preventDefault();
+        e.preventDefault();
+        this.setState({
+            searchYear: '',
+            searchName: ''
+        });
+
     }
 
     render() {
@@ -99,12 +110,11 @@ class Cards extends Component {
             // })
             // )
 
-            if (searchYear === card.awardYear || !searchYear) {
-                return (
-                    card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
-                )
-            }
-
+             return (
+             searchYear == card.awardYear || !searchYear ?
+                     card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
+            : null
+             )
         })
 
         let cards = filterCards.map((card) => {
@@ -130,6 +140,8 @@ class Cards extends Component {
                     {/* <SearchBar />*/}
                     <Form
                         className="form-row p-0 m-3 mt-5 mb-5 justify-content-center"
+                        type="submit"
+                        value="Submit"
                         onSubmit={this.handleSubmit}
                     >
                         <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
@@ -149,12 +161,15 @@ class Cards extends Component {
                             onChange={this.onChangeName}
                         />
                         <Button
-                            // type="button"
-                            type="submit"
-                            value="Submit"
-                            variant="btn ml-4 col-2 outline-dark border-dark gold"
-                            onClick={this.onClick}
+                            type="button"
+                            variant="btn ml-4 col-1 outline-dark border-dark gold"
+                            onClick={this.onClickSearch}
                         >SEARCH</Button>
+                        <Button
+                            type="button"
+                            variant="btn ml-4 col-1 outline-dark border-dark gold"
+                            onClick={this.onClickReset}
+                        >RESET</Button>
                     </Form>
                 </div>
                 <div>
