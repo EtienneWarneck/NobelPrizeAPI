@@ -29,10 +29,10 @@ class Cards extends Component {
     //     var code = country.code.toLowerCase();
 
     componentDidMount() {
-        console.log("CARDS CATEGORY", this.props)
+        console.log("COMPODIDMOUNT Cards Category", this.props)
         let category = this.props.match.params.category_name;
 
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=50&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=120&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
                 console.log("categoryData", res.data.nobelPrizes)
@@ -67,7 +67,7 @@ class Cards extends Component {
         // e.preventDefault(); //???
         console.log("ON CLICK", this.state);
         let category = this.props.match.params.category_name;
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=120&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
                 this.setState({
