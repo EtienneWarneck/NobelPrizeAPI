@@ -15,8 +15,8 @@ function WinnerCard(props) {
                     {/* <Card.Subtitle>{props.awardYear}</Card.Subtitle> */}
                     <Card.Title className="ml-3 mb-1 " as="h5">{props.awardYear}</Card.Title>
                     <Card.Title  className=" mt-1 ml-3" as="h2" >{props.name}</Card.Title>
-                    {/* <Card.Title  className=" mt-1 ml-3" as="h2" >{props.name1}</Card.Title>
-                    <Card.Title  className=" mt-1 ml-3" as="h2" >{props.name2}</Card.Title> */}
+                    <Card.Title  className=" mt-1 ml-3" as="h2" >{props.name1}</Card.Title>
+                    <Card.Title  className=" mt-1 ml-3" as="h2" >{props.name2}</Card.Title>
                     <Card.Text className=" m-3" as="h5">{props.motivation}</Card.Text>
                 </Card.Body>
                 {/* <Card.Footer></Card.Footer> */}

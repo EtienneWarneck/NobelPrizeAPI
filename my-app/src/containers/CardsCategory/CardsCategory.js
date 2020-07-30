@@ -55,13 +55,13 @@ class Cards extends Component {
             searchYear: e.target.value
         });
     }
-    // onChangeName = e => {
-    //     e.preventDefault(); //???
-    //     // console.log("ON CHANGE", e.target.value)
-    //     this.setState({
-    //         searchName: e.target.value
-    //     })
-    // }
+    onChangeName = e => {
+        e.preventDefault(); //???
+        // console.log("ON CHANGE", e.target.value)
+        this.setState({
+            searchName: e.target.value
+        })
+    }
 
     onClickSearch = e => {
         // e.preventDefault(); //???
@@ -101,20 +101,18 @@ class Cards extends Component {
         const { searchYear, searchName, allCards } = this.state;
 
         let filterCards = allCards.filter(card => {
-            //REGEX
-            // if (card.forEach(entry => {
-            //     console.log(entry)
-            //     let regexp = /[\w+ \s]+ /gi;
-            //     let result = entry.match(regexp);
-            //     console.log(result);
-            // })
-            // )
 
-             return (
-             searchYear == card.awardYear || !searchYear ?
-                     card.laureates[0].knownName?.en.toLowerCase().includes(searchName.toLowerCase())
-            : null
-             )
+            // return card.laureates.indexOf(searchName) !== -1
+
+            return (
+                // searchYear == card.awardYear || !searchYear && card.laureates && card.laureates <= 3 ?
+                searchYear === card.awardYear || (!searchYear && card.laureates) ?
+
+                    card.laureates[0]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) ||
+                    card.laureates[1]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) ||
+                    card.laureates[2]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase())
+                    : null
+            )
         })
 
         let cards = filterCards.map((card) => {
@@ -122,9 +120,9 @@ class Cards extends Component {
                 key={card.id}
                 awardYear={card.awardYear}
                 category={card.category.en}
-                name={card.laureates[0].knownName?.en}
-                // name1={card.laureates[1].knownName?.en}
-                // name2={card.laureates[2].knownName?.en}
+                name={card.laureates[0]?.knownName?.en}
+                name1={card.laureates[1]?.knownName?.en}
+                name2={card.laureates[2]?.knownName?.en}
                 motivation={card.laureates[0].motivation?.en}
             />
         });
