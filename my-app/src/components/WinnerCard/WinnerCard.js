@@ -5,7 +5,7 @@ import './WinnerCard.css';
 // import Buttons from '../Buttons/Buttons'
 
 function WinnerCard(props) {
-    console.log("PROPS from WinnerCard", props)
+    console.log("[WinnerCard.js] Props", props)
     return (
         <div className='container'>
             <div className="row justify-content-center">

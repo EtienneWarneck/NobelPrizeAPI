@@ -29,13 +29,13 @@ class Cards extends Component {
     //     var code = country.code.toLowerCase();
 
     componentDidMount() {
-        console.log("COMPODIDMOUNT Cards Category", this.props)
+        console.log("[CardsCategory.js] ComponentDidMount", this.props)
         let category = this.props.match.params.category_name;
 
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=120&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=2&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
-                console.log("categoryData", res.data.nobelPrizes)
+                // console.log("categoryData", res.data.nobelPrizes)
                 // console.log("CATEGORY", categoryData?.category?.en)
 
                 this.setState({
@@ -49,8 +49,7 @@ class Cards extends Component {
 
     onChangeYear = e => {
         e.preventDefault(); //???
-        console.log("ON CHANGE", e.target.value)
-        console.log("ON CHANGE prevent", e.preventDefault)
+        console.log("[CardsCategory.js] onChangeYear", e.target.value)
         this.setState({
             searchYear: e.target.value
         });
@@ -89,7 +88,7 @@ class Cards extends Component {
 
     handleSubmit = e => {
         console.log("SUBMIT")
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             searchYear: '',
             searchName: ''
@@ -140,7 +139,7 @@ class Cards extends Component {
                         className="form-row p-0 m-3 mt-5 mb-5 justify-content-center"
                         type="submit"
                         value="Submit"
-                        onSubmit={this.handleSubmit}
+                    // onSubmit={this.handleSubmit}
                     >
                         <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
                         <Form.Control
@@ -162,7 +161,9 @@ class Cards extends Component {
                             type="button"
                             variant="btn ml-4 col-1 outline-dark border-dark gold"
                             onClick={this.onClickSearch}
+                        // onSubmit={() => this.handleSubmit()}
                         >SEARCH</Button>
+
                         <Button
                             type="button"
                             variant="btn ml-4 col-1 outline-dark border-dark gold"

@@ -7,7 +7,7 @@ import ButtonCategory from '../../components/ButtonCategory/ButtonCategory'
 class HomeButtons extends Component {
 
     handleClick = (buttonValue) => {
-        console.log("PROPS HomeButtons", this.props)
+        // console.log("PROPS HomeButtons", this.props)
         // only 3 first letters of the button to match category in the API:
         buttonValue = buttonValue.slice(0, 3).toLowerCase();
         // console.log("HANDLECLICK")
