@@ -28,84 +28,95 @@ class Cards extends Component {
     //     const { search } = this.state;
     //     var code = country.code.toLowerCase();
 
-    componentDidMount() {
-        console.log("[CardsCategory.js] ComponentDidMount", this.props)
-        let category = this.props.match.params.category_name;
+    // async componentDidMount() {
+    //     console.log("[CardsCategory.js] ComponentDidMount", this.props)
+    //     let category = this.props.match.params.category_name;
 
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=2&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
-            .then(res => {
-                const categoryData = res.data.nobelPrizes;
-                // console.log("categoryData", res.data.nobelPrizes)
-                // console.log("CATEGORY", categoryData?.category?.en)
+    //     await axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=2&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+    //         .then(res => {
+    //             const categoryData = res.data.nobelPrizes;
+    //             // console.log("categoryData", res.data.nobelPrizes)
+    //             // console.log("CATEGORY", categoryData?.category?.en)
 
-                this.setState({
-                    allCards: categoryData,
-                    //<fetch category from the API that your router provides>
-                    category: this.props.match.params.category_name,
-                })
-            }).
-            catch(err => console.log(err))
-    };
+    //             this.setState({
+    //                 allCards: categoryData,
+    //                 //<fetch category from the API that your router provides>
+    //                 category: this.props.match.params.category_name,
+    //             })
+    //         }).
+    //         catch(err => console.log(err))
+    // };
 
-    onChangeYear = e => {
-        e.preventDefault(); //???
-        console.log("[CardsCategory.js] onChangeYear", e.target.value)
-        this.setState({
-            searchYear: e.target.value
-        });
-    }
-    onChangeName = e => {
-        e.preventDefault(); //???
-        // console.log("ON CHANGE", e.target.value)
-        this.setState({
-            searchName: e.target.value
-        })
-    }
 
-    onClickSearch = e => {
-        // e.preventDefault(); //???
-        console.log("ON CLICK", this.state);
-        let category = this.props.match.params.category_name;
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=120&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
-            .then(res => {
-                const categoryData = res.data.nobelPrizes;
-                this.setState({
-                    allCards: categoryData,
-                    // category: this.props.match.params.category_name,
-                })
-            }).
-            catch(err => console.log(err))
-    }
+
+    // onClickSearch = e => {
+    //     e.preventDefault();
+    //     console.log("ON CLICK", this.state);
+    //     let category = this.props.match.params.category_name;
+    //     axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=120&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+    //         .then(res => {
+    //             const categoryData = res.data.nobelPrizes;
+    //             this.setState({
+    //                 allCards: categoryData,
+    //                 // category: this.props.match.params.category_name,
+    //             })
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     onClickReset = e => {
         this.setState({
-            allCards: [],
+            // allCards: [],
             searchYear: '',
             searchName: '',
 
         });
     }
 
-    handleSubmit = e => {
-        console.log("SUBMIT")
-        // e.preventDefault();
-        this.setState({
-            searchYear: '',
-            searchName: ''
-        });
-
+    searchLaureates = (searchYear) => {
+        let category = this.props.match.params.category_name;
+        
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=120&sort=desc&nobelPrizeYear=' + searchYear + '&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+            .then(res => {
+                console.log("HERE", res.data.nobelPrizes[0]?.awardYear)
+                const categoryData = res.data.nobelPrizes;
+                const yearMatch = res.data.nobelPrizes[0]?.awardYear
+                this.setState({
+                    allCards: categoryData,
+                    searchYear: yearMatch
+                    // category: this.props.match.params.category_name,
+                })
+            })
+            .catch(err => console.log(err))
     }
+
+    // handleSubmit = e => {
+    //     console.log("SUBMIT")
+    //     // alert('A name was submitted: ' + this.state.value);
+    //     let category = this.props.match.params.category_name;
+    //     axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=120&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+    //         .then(res => {
+    //             const categoryData = res.data.nobelPrizes;
+    //             this.setState({
+    //                 allCards: categoryData,
+    //                 searchYear: e.target.value
+    //                 // category: this.props.match.params.category_name,
+    //             })
+    //         })
+    //         .catch(err => console.log(err))
+    //     e.preventDefault();
+    // }
 
     render() {
         const { searchYear, searchName, allCards } = this.state;
 
         let filterCards = allCards.filter(card => {
 
-            // return card.laureates.indexOf(searchName) !== -1
 
             return (
-                // searchYear == card.awardYear || !searchYear && card.laureates && card.laureates <= 3 ?
-                searchYear === card.awardYear || (!searchYear && card.laureates) ?
+                // searchYear === card.awardYear || (!searchYear && card.laureates) ?
+                searchYear === card.awardYear  ?
+
 
                     card.laureates[0]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) ||
                     card.laureates[1]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) ||
@@ -134,42 +145,7 @@ class Cards extends Component {
                 {/* <HomeButtons /> */}
                 {/* </StyledDiv> */}
                 <div>
-                    {/* <SearchBar />*/}
-                    <Form
-                        className="form-row p-0 m-3 mt-5 mb-5 justify-content-center"
-                        type="submit"
-                        value="Submit"
-                    // onSubmit={this.handleSubmit}
-                    >
-                        <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder=""
-                            className="col-2 text-center font-weight-bold border-dark"
-                            value={this.state.searchYear}
-                            onChange={this.onChangeYear}
-                        />
-                        <Form.Label htmlFor="" className="col-form-label ml-2 text-right col-auto font-weight-normal">NAME :</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder=""
-                            className="col-4 font-weight-bold border-dark"
-                            value={this.state.searchName}
-                            onChange={this.onChangeName}
-                        />
-                        <Button
-                            type="button"
-                            variant="btn ml-4 col-1 outline-dark border-dark gold"
-                            onClick={this.onClickSearch}
-                        // onSubmit={() => this.handleSubmit()}
-                        >SEARCH</Button>
-
-                        <Button
-                            type="button"
-                            variant="btn ml-4 col-1 outline-dark border-dark gold"
-                            onClick={this.onClickReset}
-                        >RESET</Button>
-                    </Form>
+                    <SearchBar searchLaureates={this.searchLaureates} />
                 </div>
                 <div>
                     {cards}
