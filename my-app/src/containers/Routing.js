@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { Fragment, Component } from 'react';
+import { Router, Route, Switch } from 'react-router-dom';
 import Navbar from '../components/NavBar/NavBar'
 import HomeButtons from './HomeButtons/HomeButtons';
 import CardsCategory from './CardsCategory/CardsCategory';
