@@ -76,8 +76,8 @@ class SearchBar extends Component {
                     name="searchYear"
                     value={this.state.searchYear}
                     onChange={this.onChange}
-                // ref={input => this.inputField = input}
-                // onFocus={() => this.inputField.value = ""}
+                ref={input => this.inputField = input}
+                onFocus={() => this.inputField.value = ""}
                 />
                 <Form.Label htmlFor="" className="col-form-label ml-2 text-right col-auto font-weight-normal">NAME :</Form.Label>
                 <Form.Control

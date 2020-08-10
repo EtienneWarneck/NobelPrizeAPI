@@ -78,26 +78,25 @@ class Cards extends Component {
     // };
 
     //Search laureates
-    searchAll =  async (searchYear, searchName) => {
+    searchAll = async (searchYear, searchName) => {
         console.log('[CardsCategory.js] searchName', searchName)
         console.log('[CardsCategory.js] searchYear', searchYear)
         let category = this.props.match.params.category_name;
         // console.log('[CardsCategory.js] category:', category)
-    //    await  axios.get('http://api.nobelprize.org/2.0/laureates?name=' + searchName + '&nobelPrizeYear=' + searchYear + '&nobelPrizeCategory' + category)
-      // http://api.nobelprize.org/2.0/laureates?name=Einstein&nobelPrizeYear=1921&nobelPrizeCategory=phy
-    await  axios.get(`http://api.nobelprize.org/2.0/laureates?name=${searchName}&nobelPrizeYear=${searchYear}&nobelPrizeCategory=${category}`)
+
+        await axios.get(`http://api.nobelprize.org/2.0/laureates?limit=2&name=${searchName}&nobelPrizeYear=${searchYear}&nobelPrizeCategory=${category}`)
             .then(res => {
-                const data = res.data.laureates;
+                const data = res.data;
                 console.log('[CardsCategory.js] data:', data)
-                
+
                 const nameMatch = res.data.laureates[0]?.knownName?.en
                 console.log('[CardsCategory.js] nameMatch', nameMatch)
-                
+
                 const yearMatch = res.data.laureates[0]?.nobelPrizes[0]?.awardYear
                 console.log('[CardsCategory.js] yearMatch', yearMatch)
 
                 this.setState({
-                    allCards: data,
+                    allCards: res.data.laureates,
                     searchName: nameMatch,
                     searchYear: yearMatch
                 })
@@ -158,31 +157,35 @@ class Cards extends Component {
             return (
                 // searchYear === card.awardYear || (!searchYear && card.laureates) ?
                 // searchYear === card.awardYear  ?
-                // card.awardYear && card.laureates ?
-                //  card.laureates ?
-                     console.log( '[CardsCategory.js] test', card.gender)
+                card.knownName ?
 
-                    // card.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) 
-                    // card[1]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) ||
-                    // card.laureates[2]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase())
+                // console.log('[CardsCategory.js] test', card.gender)
+                // console.log( '[CardsCategory.js] testmotivation', card.nobelPrizes[0]?.motivation?.en) 
 
-                    // : console.log("PROBLEM ... ")
+                //  card.gender.indexOf(allCards) >= 0
+
+                card.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) 
+                // card.laureates[1]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) ||
+                // card.laureates[2]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase())
+
+                : console.log("NOT PRINTING YET... ")
             )
         })
 
-        let cards = filterCards.map((card) => {
-            return <WinnerCard
-                key={card.id}
-                awardYear={card[0]?.nobelPrizes[0]?.awardYear}
-                category={card[0]?.category.en}
-                name={card[0]?.knownName?.en}
-                // name1={card[1]?.laureates[1]?.knownName?.en}
-                // name2={card[2]?.laureates[2]?.knownName?.en}
-                motivation={card.laureates[0].nobelPrizes[0]?.motivation?.en}
-            />
-        });
+            // let cards = filterCards
+           .map((card) => {
+                return <WinnerCard
+                    key={card.id}
+                    awardYear={card.nobelPrizes[0]?.awardYear}
+                    category={card.nobelPrizes[0]?.category?.en}
+                    name={card[0]?.knownName?.en}
+                    name1={card[1]?.knownName?.en}
+                    name2={card.knownName?.en}
+                    motivation={card.nobelPrizes[0]?.motivation?.en}
+                />
+            });
 
-        // const style = { display: 'inline', border: '10px solid orange', width: '100px' };
+        const style = { display: 'inline', border: '10px solid orange', width: '100px' };
 
         return (
             <div>
@@ -191,14 +194,14 @@ class Cards extends Component {
                 {/* </StyledDiv> */}
                 <div>
                     <SearchBar
-                         searchAll={this.searchAll}
+                        searchAll={this.searchAll}
                         // searchByYear={this.searchByYear}
                         // searchByName={this.searchByName}
                         clearResults={this.clearResults}
                         showReset={allCards.length > 0 ? true : false} />
                 </div>
                 <div>
-                    {cards}
+                    {filterCards}
                 </div>
             </div>
         )
