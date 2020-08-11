@@ -21,7 +21,7 @@ const toolbar = props => {
 
     const styleText = {
         // border: '1px solid red',
-        color:'#DDC59D',
+        color: '#DDC59D',
         fontSize: '3em',
         textAlign: 'center',
         margin: '0',
@@ -30,32 +30,63 @@ const toolbar = props => {
         width: '100%',
         outline: 'none !important',
         boxShadow: 'none !important',
-          }
-    
+    }
 
-return (
-    // <Navbar bg="" expand="lg" className="navbar d-flex justify-content-center" >
-    <div style={style}>
-        {/* <Container className="col-6"> */}
-        {/* <Row className="col-12 "> */}
-        {/* <Navbar.Brand className="navbar-brand  py-5 col-12 text-center ">BOOKS from Nobel Prize Winners</Navbar.Brand>
+    const styleHomeButton = {
+        // border: '1px solid red',
+        color: 'black',
+        fontSize: '1.2em',
+        textAlign: 'left',
+        marginLeft: '40%',
+        position: 'absolute',
+        top: '70%',
+        width: '100%',
+        outline: 'none !important',
+        boxShadow: 'none !important',
+    }
+    const styleHomeButton2 = {
+        // border: '1px solid red',
+        color: 'black',
+        fontSize: '1.2em',
+        textAlign: 'left',
+        marginLeft: '50%',
+        position: 'absolute',
+        top: '70%',
+        width: '100%',
+        outline: 'none !important',
+        boxShadow: 'none !important',
+    }
+
+
+    return (
+        // <Navbar bg="" expand="lg" className="navbar d-flex justify-content-center" >
+        <div style={style}>
+            {/* <Container className="col-6"> */}
+            {/* <Row className="col-12 "> */}
+            {/* <Navbar.Brand className="navbar-brand  py-5 col-12 text-center ">BOOKS from Nobel Prize Winners</Navbar.Brand>
              */}
-        <Nav.Link style={styleText} href='/'>Nobel Prize Laureates</Nav.Link>
-        {/* <Navbar.Text className="navbar-text bg-info text-center">TEST TEST TEST</Navbar.Text> */}
-        {/* <Nav.Link href="#link">Chemistry</Nav.Link> */}
-        {/* <Nav.Link href="#link">Economics</Nav.Link> */}
-        {/*   <Nav.Link href="#link">Literature</Nav.Link>
+            <Nav.Link style={styleText} href='/'>Nobel Prize Laureates</Nav.Link>
+            {/* <Navbar.Text className="navbar-text bg-info text-center">TEST TEST TEST</Navbar.Text> */}
+            <div>
+                <Nav.Link style={styleHomeButton} href="/">Home</Nav.Link>
+            </div>
+            <div>
+                <Nav.Link style={styleHomeButton2} href="/">GitHub</Nav.Link>
+            </div>
+
+            {/* <Nav.Link href="#link">Economics</Nav.Link> */}
+            {/*   <Nav.Link href="#link">Literature</Nav.Link>
             <Nav.Link href="#link">Medicine</Nav.Link>
             <Nav.Link href="#link">Peace</Nav.Link>
             <Nav.Link href="#link">Physics</Nav.Link> */}
-        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             </Navbar.Collapse> */}
-        {/* </Row>  */}
-        {/* </Container>/\ */}
-        {/* </Navbar> */}
-    </div>
-)
+            {/* </Row>  */}
+            {/* </Container>/\ */}
+            {/* </Navbar> */}
+        </div>
+    )
 }
 
 export default Radium(toolbar);
