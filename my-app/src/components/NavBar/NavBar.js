@@ -71,7 +71,7 @@ const toolbar = props => {
                 <Nav.Link style={styleHomeButton} href="/">Home</Nav.Link>
             </div>
             <div>
-                <Nav.Link style={styleHomeButton2} href="/">GitHub</Nav.Link>
+                <Nav.Link style={styleHomeButton2} href="https://github.com/EtienneWarneck/NobelPrizeAPI/tree/master/my-app">GitHub</Nav.Link>
             </div>
 
             {/* <Nav.Link href="#link">Economics</Nav.Link> */}
