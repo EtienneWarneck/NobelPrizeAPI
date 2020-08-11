@@ -46,20 +46,20 @@ class Cards extends Component {
         let category = this.props.match.params.category_name;
         // console.log('[CardsCategory.js] category:', category)
 
-        await axios.get(`http://api.nobelprize.org/2.0/laureates?limit=2&name=${searchName}&nobelPrizeYear=${searchYear}&nobelPrizeCategory=${category}`)
+        await axios.get(`http://api.nobelprize.org/2.0/laureates?limit=200&name=${searchName}&nobelPrizeYear=${searchYear}&nobelPrizeCategory=${category}`)
             .then(res => {
                 const data = res.data.laureates;
                 console.log('[CardsCategory.js] res.data.laureates:', data)
 
-                const nameMatch = res.data.laureates[0]?.knownName?.en 
-                console.log('[CardsCategory.js] nameMatch:', nameMatch)
+                // const nameMatch = res.data.laureates[0]?.knownName?.en 
+                // console.log('[CardsCategory.js] nameMatch:', nameMatch)
 
                 const yearMatch = res.data.laureates[0]?.nobelPrizes[0]?.awardYear
                 console.log('[CardsCategory.js] yearMatch:', yearMatch)
 
                 this.setState({
                     allCards: data,
-                    searchName:  nameMatch,
+                    // searchName:  nameMatch,
                     searchYear: yearMatch
                 })
             })
@@ -84,24 +84,18 @@ class Cards extends Component {
 
         let filterCards = allCards.filter(card => {
             return (
-                card.laureates ?
-
-                    card.laureates[0]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) ||
-                    card.laureates[1]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase()) ||
-                    card.laureates[2]?.knownName?.en.toLowerCase().includes(searchName.toLowerCase())
-
-                    : null
+                card ?
+                    card.knownName?.en.toLowerCase().includes(searchName.toLowerCase())  
+                    : console.log("PROBLEM ...")
             )
         })
             .map((card) => {
                 return <WinnerCard
                     key={card.id}
-                    awardYear={card.laureates[0]?.nobelPrizes[0].awardYear}
-                    category={card.laureates[0]?.nobelPrizes[0]?.category?.en}
-                    name={card.laureates[0]?.knownName?.en}
-                    name1={card.laureates[1]?.knownName?.en}
-                    name2={card.laureates[2]?.knownName?.en}
-                    motivation={card.laureates[0]?.nobelPrizes[0]?.motivation?.en}
+                     awardYear={card.nobelPrizes[0].awardYear}
+                    category={card.nobelPrizes[0]?.category?.en}
+                    name={card.knownName?.en}
+                    motivation={card.nobelPrizes[0]?.motivation?.en}
                 />
             });
 

@@ -36,23 +36,26 @@ const toolbar = props => {
         // border: '1px solid red',
         color: 'black',
         fontSize: '1.2em',
-        textAlign: 'left',
+        // textAlign: 'left',
         marginLeft: '40%',
+        marginRight: '10px',
         position: 'absolute',
         top: '70%',
-        width: '100%',
+        // width: '100%',
         outline: 'none !important',
         boxShadow: 'none !important',
     }
     const styleHomeButton2 = {
         // border: '1px solid red',
+                // display: 'block',
+
         color: 'black',
         fontSize: '1.2em',
-        textAlign: 'left',
+        // textAlign: 'left',
         marginLeft: '50%',
         position: 'absolute',
         top: '70%',
-        width: '100%',
+        // width: '100%',
         outline: 'none !important',
         boxShadow: 'none !important',
     }
@@ -67,7 +70,7 @@ const toolbar = props => {
              */}
             <Nav.Link style={styleText} href='/'>Nobel Prize Laureates</Nav.Link>
             {/* <Navbar.Text className="navbar-text bg-info text-center">TEST TEST TEST</Navbar.Text> */}
-            <div>
+            <div >
                 <Nav.Link style={styleHomeButton} href="/">Home</Nav.Link>
             </div>
             <div>
