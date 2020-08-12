@@ -96,7 +96,11 @@ class Cards extends Component {
 
     clearResults = (clearResults) => {
         this.setState({
-            allCards: [],
+            allCards: []
+        })
+    }
+    clearResultsNP = (clearResultsNP) => {
+        this.setState({
             allCardsNP: []
         })
     }
@@ -159,7 +163,8 @@ class Cards extends Component {
                 <div>
                     <ShowAll
                         onClickAll={this.onClickAll}
-                        showReset={allCardsNP.length > 0 ? true : false} 
+                        clearResultsNP={this.clearResultsNP}
+                        showResetNP={allCardsNP.length > 0 ? true : false} 
                     />
                     <SearchBar
                         searchAll={this.searchAll}
