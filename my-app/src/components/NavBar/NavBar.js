@@ -1,7 +1,7 @@
 import React from 'react';
 // import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
+// import Container from 'react-bootstrap/Container'
+// import Row from 'react-bootstrap/Row'
 import './Navbar.css';
 import Nav from 'react-bootstrap/Nav'
 import Radium from 'radium';
@@ -33,7 +33,7 @@ const toolbar = props => {
     }
 
     const styleHomeButton = {
-        // border: '1px solid red',
+        border: '1px solid red',
         color: 'black',
         fontSize: '1.2em',
         // textAlign: 'left',
@@ -41,21 +41,18 @@ const toolbar = props => {
         marginRight: '10px',
         position: 'absolute',
         top: '70%',
-        // width: '100%',
+        width: '100px',
         outline: 'none !important',
         boxShadow: 'none !important',
     }
     const styleHomeButton2 = {
-        // border: '1px solid red',
-                // display: 'block',
-
+        border: '1px solid red',
         color: 'black',
         fontSize: '1.2em',
-        // textAlign: 'left',
         marginLeft: '50%',
         position: 'absolute',
         top: '70%',
-        // width: '100%',
+        width: '100px',
         outline: 'none !important',
         boxShadow: 'none !important',
     }
@@ -72,8 +69,6 @@ const toolbar = props => {
             {/* <Navbar.Text className="navbar-text bg-info text-center">TEST TEST TEST</Navbar.Text> */}
             <div >
                 <Nav.Link style={styleHomeButton} href="/">Home</Nav.Link>
-            </div>
-            <div>
                 <Nav.Link style={styleHomeButton2} href="https://github.com/EtienneWarneck/NobelPrizeAPI/tree/master/my-app">GitHub</Nav.Link>
             </div>
 

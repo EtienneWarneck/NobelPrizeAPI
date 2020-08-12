@@ -17,8 +17,9 @@ class SearchBar extends Component {
     static propTypes = {
         // searchAll: PropTypes.func.isRequired,
         onClickAll: PropTypes.func.isRequired,
-        clearResults: PropTypes.func.isRequired,
-        showReset: PropTypes.bool.isRequired,
+        clearResultsNP: PropTypes.func.isRequired,
+        showResetNP: PropTypes.bool.isRequired,
+
     }
 
     // componentDidMount(e) {
@@ -36,26 +37,15 @@ class SearchBar extends Component {
     //         .catch(err => console.log(err))
     // }
 
-    onChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
-        console.log("[SearchBar.js] onChange", e.target.value)
-    }
+    // onChange = e => {
+    //     this.setState({ [e.target.name]: e.target.value });
+    //     console.log("[SearchBar.js] onChange", e.target.value)
+    // }
 
-    onSubmit = e => {
-        e.preventDefault();
-        //Sending the values to the parent
-        this.props.searchAll(this.state.searchYear, this.state.searchName)
-        //then remove values
-        this.setState({
-            searchYear: '',
-            searchName: '',
-            category: null,
-        })
-    }
-    // onSubmit2 = e => {
+    // onSubmit = e => {
     //     e.preventDefault();
     //     //Sending the values to the parent
-    //     this.props.onClickAll(this.state.searchYear, this.state.searchName)
+    //     this.props.searchAll(this.state.searchYear, this.state.searchName)
     //     //then remove values
     //     this.setState({
     //         searchYear: '',
@@ -63,6 +53,17 @@ class SearchBar extends Component {
     //         category: null,
     //     })
     // }
+    onSubmit = e => {
+        e.preventDefault();
+        //Sending the values to the parent
+        this.props.onClickAll()
+        //then remove values
+        this.setState({
+            searchYear: '',
+            searchName: '',
+            category: null,
+        })
+    }
 
     // onSubmitAll = e => {
     //     e.preventDefault();
@@ -91,21 +92,22 @@ class SearchBar extends Component {
     //         .catch(err => console.log(err))
     // }
 
-    // onClickReset = e => {
-    //     this.setState({
-    //         allCards: [],
-    //     });
-    // }
+    onClickReset = e => {
+        this.setState({
+            allCardsNP: [],
+        });
+    }
 
     render() {
-        const { clearResults, showReset } = this.props;
+        const { clearResultsNP, showResetNP } = this.props;
         return (
             <Form
                 className="form-row p-0 m-3 mt-5 mb-5 justify-content-center"
                 type="submit"
                 onSubmit={this.onSubmit}
+
             >
-                <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
+                {/* <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
                 <Form.Control
                     type="text"
                     className="col-2 text-center font-weight-bold border-dark"
@@ -137,6 +139,20 @@ class SearchBar extends Component {
                         type="reset"
                         variant="btn ml-4 col-1 outline-dark border-dark gold"
                         onClick={clearResults}
+                    >RESET</Button>
+                )} */}
+                <Button
+                    type="submit"
+                    variant="btn ml-4 col-4 outline-dark border-dark gold"
+                    onSubmit={this.onSubmit}
+                // onSubmit={() => this.handleSubmit()}
+                >SHOW ALL LAUREATES BY YEAR</Button>
+
+                {showResetNP && (
+                    <Button
+                        type="reset"
+                        variant="btn ml-4 col-1 outline-dark border-dark gold"
+                        onClick={clearResultsNP}
                     >RESET</Button>
                 )}
             </Form>
