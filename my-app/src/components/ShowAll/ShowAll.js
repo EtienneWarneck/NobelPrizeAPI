@@ -84,13 +84,13 @@ class ShowAll extends Component {
                 // onSubmit={() => this.handleSubmit()}
                 >SHOW ALL LAUREATES BY YEAR</Button>
 
-                {showResetNP && (
+                {/* {showResetNP && (
                     <Button
                         type="reset"
                         variant="btn ml-4 col-1 outline-dark border-dark gold"
                         onClick={clearResultsNP}
                     >RESET ALL</Button>
-                )}
+                )} */}
             </Form>
         )
     }

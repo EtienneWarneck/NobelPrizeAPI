@@ -64,6 +64,7 @@ class Cards extends Component {
                 })
             })
             .catch(err => console.log(err))
+        this.clearResults();
     }
 
     //Search laureates with laureates API
@@ -90,15 +91,18 @@ class Cards extends Component {
                     searchYear: yearMatch
                 })
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
+        this.clearResultsNP();
+
     };
 
 
     clearResults = (clearResults) => {
         this.setState({
-            allCards: []
-        })
+            allCards: [],
+        });
     }
+
     clearResultsNP = (clearResultsNP) => {
         this.setState({
             allCardsNP: []
@@ -114,6 +118,7 @@ class Cards extends Component {
     render() {
         const { searchName, searchNameNP, allCards, allCardsNP } = this.state;
 
+        //filter and map Year and Name with Laureates API
         let filterCards = allCards.filter(card => {
             return (
                 card ?
@@ -132,6 +137,7 @@ class Cards extends Component {
                 />
             });
 
+        //filter and map All laureates with nobelPrizes API
         let filterCardsNP = allCardsNP.filter(cardNP => {
             return (
                 cardNP.laureates ?
@@ -164,7 +170,7 @@ class Cards extends Component {
                     <ShowAll
                         onClickAll={this.onClickAll}
                         clearResultsNP={this.clearResultsNP}
-                        showResetNP={allCardsNP.length > 0 ? true : false} 
+                        showResetNP={allCardsNP.length > 0 ? true : false}
                     />
                     <SearchBar
                         searchAll={this.searchAll}

@@ -33,24 +33,26 @@ const toolbar = props => {
     }
 
     const styleHomeButton = {
-        border: '1px solid red',
+        // border: '1px solid red',
+        display: 'inline-block',
+        position: 'absolute',
         color: 'black',
         fontSize: '1.2em',
-        // textAlign: 'left',
         marginLeft: '40%',
         marginRight: '10px',
-        position: 'absolute',
         top: '70%',
         width: '100px',
         outline: 'none !important',
         boxShadow: 'none !important',
     }
     const styleHomeButton2 = {
-        border: '1px solid red',
+        // border: '1px solid red',
+        display: 'inline-block',
+        position: 'absolute',
+
         color: 'black',
         fontSize: '1.2em',
         marginLeft: '50%',
-        position: 'absolute',
         top: '70%',
         width: '100px',
         outline: 'none !important',

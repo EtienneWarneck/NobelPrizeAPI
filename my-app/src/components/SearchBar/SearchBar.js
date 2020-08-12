@@ -15,8 +15,8 @@ class SearchBar extends Component {
     }
 
     static propTypes = {
-        // searchAll: PropTypes.func.isRequired,
-        onClickAll: PropTypes.func.isRequired,
+        searchAll: PropTypes.func.isRequired,
+        // onClickAll: PropTypes.func.isRequired,
         clearResults: PropTypes.func.isRequired,
         showReset: PropTypes.bool.isRequired,
     }
@@ -105,7 +105,8 @@ class SearchBar extends Component {
                 type="submit"
                 onSubmit={this.onSubmit}
             >
-                <Form.Label htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
+                <Form.Label 
+                htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
                 <Form.Control
                     type="text"
                     className="col-2 text-center font-weight-bold border-dark"
@@ -113,8 +114,9 @@ class SearchBar extends Component {
                     value={this.state.searchYear}
                     onChange={this.onChange}
                     ref={input => this.inputField = input}
-                    onFocus={() => this.inputField.value = ""}
+                    onFocus={() => this.inputField.value = ''}
                 />
+
                 <Form.Label htmlFor="" className="col-form-label ml-2 text-right col-auto font-weight-normal">NAME :</Form.Label>
                 <Form.Control
                     type="text"
@@ -122,6 +124,7 @@ class SearchBar extends Component {
                     name="searchName"
                     value={this.state.searchName}
                     onChange={this.onChange}
+                    
                 />
 
                 <Button
