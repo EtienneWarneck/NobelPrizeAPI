@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 // import FormControl from 'react-bootstrap/FormControl';
 import axios from 'axios';
 import PropTypes from 'prop-types'
+import YearWarning from '../YearWarning/YearWarning';
 
 class SearchBar extends Component {
     state = {
@@ -16,6 +17,7 @@ class SearchBar extends Component {
 
     static propTypes = {
         searchAll: PropTypes.func.isRequired,
+        // warningYear: PropTypes.func.isRequired,
         // onClickAll: PropTypes.func.isRequired,
         clearResults: PropTypes.func.isRequired,
         showReset: PropTypes.bool.isRequired,
@@ -38,13 +40,20 @@ class SearchBar extends Component {
 
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log("[SearchBar.js] onChange", e.target.value)
+        // console.log("[SearchBar.js] onChange", e.target.value)
     }
 
     onSubmit = e => {
         e.preventDefault();
         //Sending the values to the parent
+        // this.props.warningYear()
+
         this.props.searchAll(this.state.searchYear, this.state.searchName)
+
+        // this.props.searchYear >= "1901" ?
+        //     <YearWarning />
+        //     : null
+
         //then remove values
         this.setState({
             searchYear: '',
@@ -105,13 +114,16 @@ class SearchBar extends Component {
                 type="submit"
                 onSubmit={this.onSubmit}
             >
-                <Form.Label 
-                htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
+                <Form.Label
+                    htmlFor="" className="col-form-label text-right col-auto text-uppercase font-weight-normal">Year :</Form.Label>
                 <Form.Control
                     type="text"
+                    placeholder="Year"
                     className="col-2 text-center font-weight-bold border-dark"
                     name="searchYear"
+                    // name = {this.state.searchYear >= '1901' ? "searchYear" : "Start 1901"}
                     value={this.state.searchYear}
+                    // value={this.state.searchYear >= "1901" ? "searchYear" : "Start 1901"}
                     onChange={this.onChange}
                     ref={input => this.inputField = input}
                     onFocus={() => this.inputField.value = ''}
@@ -120,11 +132,12 @@ class SearchBar extends Component {
                 <Form.Label htmlFor="" className="col-form-label ml-2 text-right col-auto font-weight-normal">NAME :</Form.Label>
                 <Form.Control
                     type="text"
+                    placeholder="Name"
                     className="col-4 font-weight-bold border-dark"
                     name="searchName"
                     value={this.state.searchName}
                     onChange={this.onChange}
-                    
+
                 />
 
                 <Button

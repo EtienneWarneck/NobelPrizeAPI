@@ -1,0 +1,29 @@
+ /* :root {
+     --primary-color: #addcf6; 
+    --dark-color: #333333;
+    --light-color: #f4f4f4;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+     --warning-color: yellow; 
+
+     --primary-color: #8e5b53; 
+    --warning-color: #DDC59D;
+    
+} */
+
+ /* :root {
+     --yellow:#8e5b53;
+ } */
+
+ .gold {
+    background-color: #DDC59D !important;
+ }
+
+ .brown {
+    background-color: #8e5b53 !important;
+ }
+
+
+ .white {
+     background-color: white;
+ } 

@@ -6,6 +6,7 @@ import WinnerCard from '../../components/WinnerCard/WinnerCard'
 // import buttonCategory from "../../components/ButtonCategory/ButtonCategory"
 import SearchBar from '../../components/SearchBar/SearchBar';
 import ShowAll from '../../components/ShowAll/ShowAll'
+import YearWarning from '../../components/YearWarning/YearWarning';
 // import styled from 'styled-components';
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
@@ -85,16 +86,33 @@ class Cards extends Component {
                 const yearMatch = res.data.laureates[0]?.nobelPrizes[0]?.awardYear
                 console.log('[CardsCategory.js] searchAll yearMatch:', yearMatch)
 
-                this.setState({
-                    allCards: data,
-                    // searchName:  nameMatch,
-                    searchYear: yearMatch
-                })
+                let warning = () => {
+                    yearMatch > 1901 ?
+
+
+                        this.setState({
+                            allCards: data,
+                            // searchName:  nameMatch,
+                            searchYear: yearMatch
+                        }) :
+                        this.setState({
+                            allCards: [],
+                            // searchName:  nameMatch,
+                            // searchYear: "1901"
+                        })
+                }
             })
             .catch(err => console.log(err));
         this.clearResultsNP();
 
     };
+
+    warningYear = e => {
+        this.setState({
+            allCards: [],
+            searchYear: "Warning"
+        });
+    }
 
 
     clearResults = (clearResults) => {
@@ -107,8 +125,8 @@ class Cards extends Component {
         this.setState({
             allCardsNP: []
         })
-    }
 
+    }
     // handleSubmit = e => {
     //     console.log("SUBMIT")
     //     this.componentDidMount()
@@ -116,26 +134,25 @@ class Cards extends Component {
     // }
 
     render() {
-        const { searchName, searchNameNP, allCards, allCardsNP } = this.state;
+        const { searchName, searchYear, searchNameNP, allCards, allCardsNP } = this.state;
 
         //filter and map Year and Name with Laureates API
         let filterCards = allCards.filter(card => {
             return (
                 card ?
                     card.knownName?.en.toLowerCase().includes(searchName.toLowerCase())
-                    : console.log("PROBLEM ...")
+                    : console.log("PROBLEM ... ")
             )
-        })
-            .map((card) => {
-                return <WinnerCard
-                    key={card.id}
-                    awardYear={card.nobelPrizes[0].awardYear}
-                    category={card.nobelPrizes[0]?.category?.en}
-                    name={card.knownName?.en}
-                    gender={card.gender}
-                    motivation={card.nobelPrizes[0]?.motivation?.en}
-                />
-            });
+        }).map((card) => {
+            return <WinnerCard
+                key={card.id}
+                awardYear={card.nobelPrizes[0].awardYear}
+                category={card.nobelPrizes[0]?.category?.en}
+                name={card.knownName?.en}
+                gender={card.gender}
+                motivation={card.nobelPrizes[0]?.motivation?.en}
+            />
+        });
 
         //filter and map All laureates with nobelPrizes API
         let filterCardsNP = allCardsNP.filter(cardNP => {
@@ -144,20 +161,41 @@ class Cards extends Component {
                     cardNP.laureates[0]?.knownName?.en.toLowerCase().includes(searchNameNP.toLowerCase()) ||
                     cardNP.laureates[1]?.knownName?.en.toLowerCase().includes(searchNameNP.toLowerCase()) ||
                     cardNP.laureates[2]?.knownName?.en.toLowerCase().includes(searchNameNP.toLowerCase())
-                    : console.log("PROBLEM NP ...")
+                    : console.log("PBNP")
             )
+        }).map((cardNP) => {
+            return <WinnerCard
+                key={cardNP.id}
+                awardYear={cardNP.awardYear}
+                category={cardNP.category?.en}
+                name={cardNP.laureates[0]?.knownName?.en}
+                name1={cardNP.laureates[1]?.knownName?.en}
+                name2={cardNP.laureates[2]?.knownName?.en}
+                motivation={cardNP.laureates[0]?.motivation?.en}
+            />
         })
-            .map((cardNP) => {
-                return <WinnerCard
-                    key={cardNP.id}
-                    awardYear={cardNP.awardYear}
-                    category={cardNP.category?.en}
-                    name={cardNP.laureates[0]?.knownName?.en}
-                    name1={cardNP.laureates[1]?.knownName?.en}
-                    name2={cardNP.laureates[2]?.knownName?.en}
-                    motivation={cardNP.laureates[0]?.motivation?.en}
+
+        //show a warning card for years < 1901 
+        let warningCard = allCards.filter(card => {
+            return (
+                card && searchYear < '1901' ?
+                console.log("TEST")
+                    : console.log("PROBLEM ...")
+            )
+        }).map((card) => {
+            return (
+                <YearWarning
+                    // awardYear={"null"}
+                 
+
+
                 />
-            });
+            )
+
+        })
+
+
+
 
         // const style = { display: 'inline', border: '10px solid orange', width: '100px' };
 
@@ -175,11 +213,17 @@ class Cards extends Component {
                     <SearchBar
                         searchAll={this.searchAll}
                         clearResults={this.clearResults}
-                        showReset={allCards.length > 0 ? true : false} />
+                        showReset={allCards.length > 0 ? true : false}
+                    />
+                    <YearWarning
+                        warningYear={this.warningYear}
+                    />
+
                 </div>
                 <div>
                     {filterCards}
                     {filterCardsNP}
+                    {warningCard}
                 </div>
             </div >
         )
