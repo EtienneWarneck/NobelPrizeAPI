@@ -51,7 +51,7 @@ class Cards extends Component {
         console.log("[CardsCategory.js] onClickAll this.state: ", this.state);
         console.log("[[CardsCategory.js] onClickAll this.props: ", this.props);
         let category = this.props.match.params.category_name;
-        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=200&sort=desc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
+        axios.get('http://api.nobelprize.org/2.0/nobelPrizes?limit=200&sort=asc&nobelPrizeCategory=' + category + '&format=json&csvLang=en')
             .then(res => {
                 const categoryData = res.data.nobelPrizes;
 
@@ -86,33 +86,35 @@ class Cards extends Component {
                 const yearMatch = res.data.laureates[0]?.nobelPrizes[0]?.awardYear
                 console.log('[CardsCategory.js] searchAll yearMatch:', yearMatch)
 
-                let warning = () => {
-                    yearMatch > 1901 ?
+                // let warning = () => {
+                //     yearMatch > 1901 ?
 
 
-                        this.setState({
-                            allCards: data,
-                            // searchName:  nameMatch,
-                            searchYear: yearMatch
-                        }) :
-                        this.setState({
-                            allCards: [],
-                            // searchName:  nameMatch,
-                            // searchYear: "1901"
-                        })
-                }
+                this.setState({
+                    allCards: data,
+                    // searchName:  nameMatch,
+                    searchYear: yearMatch
+                })
+                // this.setState({
+                //     allCards: [],
+                //     // searchName:  nameMatch,
+                //     // searchYear: "1901"
+                // })
+                // }
             })
             .catch(err => console.log(err));
         this.clearResultsNP();
 
     };
 
-    warningYear = e => {
-        this.setState({
-            allCards: [],
-            searchYear: "Warning"
-        });
-    }
+    // warningYear = e => {
+    //     console.log("[CardsCategory.js] warningYear")
+
+    //     this.setState({
+    //         allCards: [],
+    //         // searchYear: "Warning"
+    //     });
+    // }
 
 
     clearResults = (clearResults) => {
@@ -173,29 +175,14 @@ class Cards extends Component {
                 name2={cardNP.laureates[2]?.knownName?.en}
                 motivation={cardNP.laureates[0]?.motivation?.en}
             />
-        })
+        });
 
         //show a warning card for years < 1901 
-        let warningCard = allCards.filter(card => {
-            return (
-                card && searchYear < '1901' ?
-                console.log("TEST")
-                    : console.log("PROBLEM ...")
-            )
-        }).map((card) => {
-            return (
-                <YearWarning
-                    // awardYear={"null"}
-                 
-
-
-                />
-            )
-
-        })
-
-
-
+        // let warningCard = (searchYear) => {
+        //     return (
+        //         <YearWarning />
+        //     )
+        // }
 
         // const style = { display: 'inline', border: '10px solid orange', width: '100px' };
 
@@ -215,15 +202,11 @@ class Cards extends Component {
                         clearResults={this.clearResults}
                         showReset={allCards.length > 0 ? true : false}
                     />
-                    <YearWarning
-                        warningYear={this.warningYear}
-                    />
-
                 </div>
                 <div>
                     {filterCards}
                     {filterCardsNP}
-                    {warningCard}
+                    {/* {warningCard} */}
                 </div>
             </div >
         )

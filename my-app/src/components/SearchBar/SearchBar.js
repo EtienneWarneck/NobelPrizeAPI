@@ -48,12 +48,13 @@ class SearchBar extends Component {
         //Sending the values to the parent
         // this.props.warningYear()
 
-        this.props.searchAll(this.state.searchYear, this.state.searchName)
+        // this.props.searchAll(this.state.searchYear, this.state.searchName)
 
-        // this.props.searchYear >= "1901" ?
-        //     <YearWarning />
-        //     : null
-
+        {
+            // this.props.searchYear >= 1901 ?
+            this.props.searchAll(this.state.searchYear, this.state.searchName)
+            // : this.props.warningYear(this.state.searchYear, this.state.searchName)
+        }
         //then remove values
         this.setState({
             searchYear: '',
@@ -61,18 +62,7 @@ class SearchBar extends Component {
             category: null,
         })
     }
-    // onSubmit2 = e => {
-    //     e.preventDefault();
-    //     //Sending the values to the parent
-    //     this.props.onClickAll(this.state.searchYear, this.state.searchName)
-    //     //then remove values
-    //     this.setState({
-    //         searchYear: '',
-    //         searchName: '',
-    //         category: null,
-    //     })
-    // }
-
+  
     // onSubmitAll = e => {
     //     e.preventDefault();
     //     //Sending the values to the parent
